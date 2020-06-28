@@ -1,0 +1,31 @@
+.flash {
+  -webkit-animation-name: flash-animation;
+  -webkit-animation-duration: 0.3s;
+  animation-name: flash-animation;
+  animation-duration: 0.3s;
+}
+
+@keyframes flash-animation {
+  from {
+    filter: invert(0%);
+  }
+  to {
+    filter: invert(100%);
+  }
+}
+
+.grow-animation {
+  animation-timing-function: ease-in;
+  animation-name: grow-anim;
+  animation-duration: 0.5s;
+}
+
+@keyframes grow-anim {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
