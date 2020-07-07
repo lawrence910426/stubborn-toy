@@ -1,10 +1,13 @@
-$(document).ready(function() {
+if($('#Nav-bar').html() == "") {
     $.get("Fragments/nav.html", function(data){
-        var body = data.replace(/^.*?<body>(.*?)<\/body>.*?$/s,"$1");
-        $("#Nav-bar").replaceWith(body);
+        data = data.replace(/^.*?<div id="nav">(.*?)<\/div>.*?$/s, "$1");
+        $('#Nav-bar').html(data);
     });
+}
+
+if($('#Footer').html() == "") {
     $.get("Fragments/footer.html", function(data){
-        var body = data.replace(/^.*?<body>(.*?)<\/body>.*?$/s,"$1");
-        $("#Footer").replaceWith(body);
+        data = data.replace(/^.*?<div><\/div>(.*?)<div><\/div>.*?$/s, "$1");
+        $("#Footer").html(data);
     });
-})
+}

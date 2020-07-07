@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log("QQ")
     var converter = new showdown.Converter();
     var prev_text = ""
     function update() {
@@ -18,6 +19,8 @@ $(document).ready(function() {
         var button = $(this)
         button.addClass('flash');
         setTimeout(function() { button.removeClass('flash'); }, 400);
+        if(button.attr('action') === undefined) return;
+        $("#markdown").text($("#markdown").text() + button.attr('action') + "\n")
     })
     
     var Image_Upload_Box_Shown = false
@@ -36,5 +39,10 @@ $(document).ready(function() {
         /* $("#Color_Picker_Box").addClass('grow-animation');
         setTimeout(function() { $("#Color_Picker_Box").removeClass('grow-animation'); }, 400); */  
         Color_Picker_Box_Shown = !Color_Picker_Box_Shown;   
+    })
+    
+    $("#Color-Picker-Button").click(function() {
+        var string = "<span style=\"color:" + $("#Color-Picker").val() + "\">Some colored text</span>";
+        $("#markdown").text($("#markdown").text() + string + "\n")
     })
 })
