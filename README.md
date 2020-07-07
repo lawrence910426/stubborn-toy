@@ -3,7 +3,7 @@
 This is a combination of forums & news. Hopefully this would attract millions of users to this site.
 Everything is still under progress. The project should be done around July or August. 
 
-The provisional website can be found [here](http://34.68.23.49/frontend/)
+The provisional website can be found [here](http://34.68.23.49/frontend/).
 - - -
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
