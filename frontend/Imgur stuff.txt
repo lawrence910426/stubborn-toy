@@ -1,2 +1,0 @@
-Client ID: 2f2a99617dcff11
-Client secret: 82b1564e979e37a6467d35c162505b5e34c82396
