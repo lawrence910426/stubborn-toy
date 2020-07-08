@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("QQ")
     var converter = new showdown.Converter();
     var prev_text = ""
     function update() {
@@ -15,21 +14,17 @@ $(document).ready(function() {
     }
     loop()
     
+    
+    function append_text(text) {
+        $("#markdown").val($("#markdown").val() + text + "\n")
+    }
+    
     $(".text-tools").click(function() {
         var button = $(this)
         button.addClass('flash');
         setTimeout(function() { button.removeClass('flash'); }, 400);
         if(button.attr('action') === undefined) return;
-        $("#markdown").text($("#markdown").text() + button.attr('action') + "\n")
-    })
-    
-    var Image_Upload_Box_Shown = false
-    $("#Image_Upload_Box").parent().css("display", "None")
-    $("#upload_image").click(function() {
-        $("#Image_Upload_Box").parent().css("display", (Image_Upload_Box_Shown ? "None" : "Block"))
-        /* $("#Image_Upload_Box").addClass('grow-animation');
-        setTimeout(function() { $("#Image_Upload_Box").removeClass('grow-animation'); }, 400); */
-        Image_Upload_Box_Shown = !Image_Upload_Box_Shown; 
+        append_text(button.attr('action'))
     })
     
     var Color_Picker_Box_Shown = false
@@ -43,6 +38,77 @@ $(document).ready(function() {
     
     $("#Color-Picker-Button").click(function() {
         var string = "<span style=\"color:" + $("#Color-Picker").val() + "\">Some colored text</span>";
-        $("#markdown").text($("#markdown").text() + string + "\n")
+        append_text(string)
     })
+    
+    
+    
+    var Image_Upload_Box_Shown = false
+    function Image_Upload_Box_Reverse() {
+        $("#Image_Upload_Box").parent().css("display", (Image_Upload_Box_Shown ? "None" : "Block"))
+        /* $("#Image_Upload_Box").addClass('grow-animation');
+        setTimeout(function() { $("#Image_Upload_Box").removeClass('grow-animation'); }, 400); */
+        Image_Upload_Box_Shown = !Image_Upload_Box_Shown; 
+    }
+    $("#Image_Upload_Box").parent().css("display", "None")
+    $("#upload_image").click(Image_Upload_Box_Reverse)
+    
+    function Set_Upload_Box_Status(status) {
+        if(status == "default") {
+            $("#Upload_Text").text("Upload Your Image Here")
+        } else if(status == "loading") {
+            $("#Upload_Text").text("Loading image...")
+        }
+    }
+    Set_Upload_Box_Status("default")
+    
+    $("#Image_Upload_Box").on("drop", async function(ev) {
+        function getBase64(file) {
+            return new Promise(function(resolve, reject) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () { resolve(reader.result); };
+                reader.onerror = function (error) { reject(error) };  
+            })
+        }
+        async function getImgurLink(content) {
+            var resp = await $.ajax({
+                type: 'POST',
+                url: 'https://api.imgur.com/3/image',
+                headers: {
+                    Authorization: 'Client-ID 513db35f7694f3f'
+                },
+                data: {
+                    type: "base64",
+                    image: content
+                }
+            });
+            return resp.data.link;
+        }
+        async function processFile(file) {
+            Set_Upload_Box_Status("loading")
+            var base64 = await getBase64(file);
+            base64 = base64.split(",")[1];
+            var link = await getImgurLink(base64)
+            append_text("![](" + link + ")")
+            Image_Upload_Box_Reverse();
+            Set_Upload_Box_Status("default")
+        }
+        
+        ev = ev.originalEvent;
+        ev.preventDefault();
+        if (ev.dataTransfer.items) {
+            for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                if (ev.dataTransfer.items[i].kind === 'file') {
+                    processFile(ev.dataTransfer.items[i].getAsFile())
+                }
+            }
+        } else {
+            for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                processFile(ev.dataTransfer.files[i])
+            }
+        }
+    });
+    
+    $("#Image_Upload_Box").on("dragover", function(ev) { ev.preventDefault(); });
 })
