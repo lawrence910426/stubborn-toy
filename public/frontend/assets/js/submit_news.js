@@ -72,18 +72,22 @@ $(document).ready(function() {
             })
         }
         async function getImgurLink(content) {
-            var resp = await $.ajax({
-                type: 'POST',
-                url: 'https://api.imgur.com/3/image',
-                headers: {
-                    Authorization: 'Client-ID 513db35f7694f3f'
-                },
-                data: {
-                    type: "base64",
-                    image: content
-                }
-            });
-            return resp.data.link;
+            try {
+                var resp = await $.ajax({
+                    type: 'POST',
+                    url: 'https://api.imgur.com/3/image',
+                    headers: {
+                        Authorization: 'Client-ID 513db35f7694f3f'
+                    },
+                    data: {
+                        type: "base64",
+                        image: content
+                    }
+                }); 
+                return resp.data.link;
+            } catch(err) {
+                return "Error"
+            }
         }
         async function processFile(file) {
             Set_Upload_Box_Status("loading")
