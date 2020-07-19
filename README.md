@@ -19,6 +19,10 @@ The provisional website can be found [here](http://34.68.23.49/frontend/).
 
 # Some Technical Outlines
 - ORM Architecture
+-  Laravel Backend (Obviously)
+- MySQL & MariaDB Engine
+- Website frontend
+
 - - -
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
