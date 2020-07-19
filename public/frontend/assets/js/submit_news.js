@@ -1,3 +1,50 @@
+function getBase64(file) {
+    return new Promise(function(resolve, reject) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () { resolve(reader.result); };
+        reader.onerror = function (error) { reject(error) };  
+    })
+}
+async function getImgurLink(content) {
+    try {
+        var resp = await $.ajax({
+            type: 'POST',
+            url: 'https://api.imgur.com/3/image',
+            headers: {
+                Authorization: 'Client-ID 513db35f7694f3f'
+            },
+            data: {
+                type: "base64",
+                image: content
+            }
+        }); 
+        return resp.data.link;
+    } catch(err) {
+        return "Error"
+    }
+}
+function dragAndDrop(id, behavior) {
+    $(id).on("drop", async function(ev) {
+        ev = ev.originalEvent;
+        ev.preventDefault();
+        if (ev.dataTransfer.items) {
+            for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                if (ev.dataTransfer.items[i].kind === 'file') {
+                    behavior(ev.dataTransfer.items[i].getAsFile())
+                }
+            }
+        } else {
+            for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                behavior(ev.dataTransfer.files[i])
+            }
+        }
+    });
+    $(id).on("dragover", function(ev) { ev.preventDefault(); });
+}
+
+
+
 $(document).ready(function() {
     var converter = new showdown.Converter();
     var prev_text = ""
@@ -55,64 +102,42 @@ $(document).ready(function() {
     
     function Set_Upload_Box_Status(status) {
         if(status == "default") {
-            $("#Upload_Text").text("Upload Your Image Here")
+            $("#Upload_Text_Status").text("Upload Your Image Here")
         } else if(status == "loading") {
-            $("#Upload_Text").text("Loading image...")
+            $("#Upload_Text_Status  ").text("Loading image...")
         }
     }
     Set_Upload_Box_Status("default")
     
-    $("#Image_Upload_Box").on("drop", async function(ev) {
-        function getBase64(file) {
-            return new Promise(function(resolve, reject) {
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () { resolve(reader.result); };
-                reader.onerror = function (error) { reject(error) };  
-            })
-        }
-        async function getImgurLink(content) {
-            try {
-                var resp = await $.ajax({
-                    type: 'POST',
-                    url: 'https://api.imgur.com/3/image',
-                    headers: {
-                        Authorization: 'Client-ID 513db35f7694f3f'
-                    },
-                    data: {
-                        type: "base64",
-                        image: content
-                    }
-                }); 
-                return resp.data.link;
-            } catch(err) {
-                return "Error"
-            }
-        }
-        async function processFile(file) {
-            Set_Upload_Box_Status("loading")
-            var base64 = await getBase64(file);
-            base64 = base64.split(",")[1];
-            var link = await getImgurLink(base64)
-            append_text("![](" + link + ")")
-            Image_Upload_Box_Reverse();
-            Set_Upload_Box_Status("default")
-        }
-        
-        ev = ev.originalEvent;
-        ev.preventDefault();
-        if (ev.dataTransfer.items) {
-            for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-                if (ev.dataTransfer.items[i].kind === 'file') {
-                    processFile(ev.dataTransfer.items[i].getAsFile())
-                }
-            }
-        } else {
-            for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-                processFile(ev.dataTransfer.files[i])
-            }
-        }
-    });
+    dragAndDrop("#Image_Upload_Box", async function (file) {
+        Set_Upload_Box_Status("loading")
+        var base64 = await getBase64(file);
+        base64 = base64.split(",")[1];
+        var link = await getImgurLink(base64)
+        append_text("![](" + link + ")")
+        Image_Upload_Box_Reverse();
+        Set_Upload_Box_Status("default")
+    })
     
-    $("#Image_Upload_Box").on("dragover", function(ev) { ev.preventDefault(); });
+    
+    
+    
+    function Set_Abstract_Box_Status(status) {
+        if(status == "default") {
+            $("#Abstract_Text_Status").text("Upload Your Image Here")
+        } else if(status == "loading") {
+            $("#Abstract_Text_Status  ").text("Loading image...")
+        }
+    }
+    Set_Abstract_Box_Status("default")
+    
+    dragAndDrop("#Abstract_Upload_Box", async function (file) {
+        Set_Abstract_Box_Status("loading")
+        var base64 = await getBase64(file);
+        base64 = base64.split(",")[1];
+        var link = await getImgurLink(base64)
+        $('#Abstract_Preview_Small').attr('src',link);
+        $('#Abstract_Preview_Big').attr('src',link);
+        Set_Abstract_Box_Status("default")
+    })
 })
