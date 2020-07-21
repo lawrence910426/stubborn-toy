@@ -140,4 +140,5 @@ $(document).ready(function() {
         $('#Abstract_Preview_Big').attr('src',link);
         Set_Abstract_Box_Status("default")
     })
+    
 })
