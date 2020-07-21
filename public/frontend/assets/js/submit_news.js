@@ -137,7 +137,6 @@ $(document).ready(function() {
         base64 = base64.split(",")[1];
         var link = await getImgurLink(base64)
         $('#Abstract_Preview_Small').attr('src',link);
-        $('#Abstract_Preview_Big').attr('src',link);
         Set_Abstract_Box_Status("default")
     })
     
