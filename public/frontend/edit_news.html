@@ -88,7 +88,7 @@
                             <h4 class="text-center card-title">審核通過後，是否通知</h4>
                             <div class="row">
                                 <div class="col">
-                                    <div class="form-check text-center"><input class="form-check-input" type="radio" id="yes_announce" for="formCheck-2" name="announce"><label class="form-check-label" for="yes_announce">是</label></div>
+                                    <div class="form-check text-center" data-toggle="modal" data-target="#Message_Announcement"><input class="form-check-input" type="radio" id="yes_announce" for="formCheck-2" name="announce"><label class="form-check-label" for="yes_announce">是</label></div>
                                 </div>
                                 <div class="col">
                                     <div class="form-check text-center"><input class="form-check-input" type="radio" id="no_announce" name="announce"><label class="form-check-label" for="no_announce">否</label></div>
@@ -261,6 +261,18 @@
                     <p>待投稿審核人員核可後，您的投稿就會出現在網站上了！</p>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">關閉</button><button class="btn btn-primary" type="button">確認</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="Message_Announcement">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">請先私密粉專</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p>在您私密我們的粉絲專頁後，我們才能通知您，我們無法通知未曾私密粉專的使用者。<br><br><a href="https://www.facebook.com/%E4%B8%80%E7%9B%B4%E9%A0%91-107594257704279">https://www.facebook.com/%E4%B8%80%E7%9B%B4%E9%A0%91-107594257704279</a><br></p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button" data-dismiss="modal">確認</button></div>
             </div>
         </div>
     </div>
