@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Toggle-Switches.css">
 </head>
 
 <body>
@@ -107,17 +108,36 @@
     <!-- End: Sidebar -->
     <!-- Start: Bold BS4 Animated Back To Top --><a class="cd-top js-cd-top cd-top--fade-out cd-top--show" style="background-image:url(&quot;assets/img/cd-top-arrow.svg&quot;);" href="#0">Top</a>
     <!-- End: Bold BS4 Animated Back To Top -->
-    <div id="Footer"></div>
+    <div id="Footer"></div><!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD7zmd0TZzynS5j17u4QF0cDKIWJzMgulc",
+    authDomain: "stubborn-toy.firebaseapp.com",
+    databaseURL: "https://stubborn-toy.firebaseio.com",
+    projectId: "stubborn-toy",
+    storageBucket: "stubborn-toy.appspot.com",
+    messagingSenderId: "72000445740",
+    appId: "1:72000445740:web:7dc8a7b12db8e4c1a0a089",
+    measurementId: "G-RZYHVBHEGR"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/base64.js"></script>
     <script src="assets/js/Bold-BS4-Animated-Back-To-Top.js"></script>
-    <script src="assets/js/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/load_fragment.js"></script>
     <script src="assets/js/submit_clarification.js"></script>
