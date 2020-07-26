@@ -31,7 +31,7 @@ $(document).ready(function() {
             // call server for deleting session.
             refresh();
         }, {scope: 'public_profile,email'});
-     }
+     })
     
     function refresh() {
         get_connected().then(function(ans) {
@@ -44,5 +44,6 @@ $(document).ready(function() {
             }
         })   
     }
+    refresh();
 })
 
