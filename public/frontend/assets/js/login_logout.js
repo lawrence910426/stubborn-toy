@@ -23,22 +23,26 @@ $(document).ready(function() {
         }
         FB.login(function() {
             junk();
+            refresh();
         }, {scope: 'public_profile,email'});  
     })
     $("#logout_btn").click(function() {
         FB.logout(function() {
             // call server for deleting session.
+            refresh();
         }, {scope: 'public_profile,email'});
      }
-                          
-    get_connected().then(function(ans) {
-        if(ans) {
-            $("#login_btn").css("display", "none");
-            $("#logout_btn").css("display", "block");
-        } else {
-            $("#login_btn").css("display", "block");
-            $("#logout_btn").css("display", "none");
-        }
-    })
+    
+    function refresh() {
+        get_connected().then(function(ans) {
+            if(ans) {
+                $("#login_btn").css("display", "none");
+                $("#logout_btn").css("display", "block");
+            } else {
+                $("#login_btn").css("display", "block");
+                $("#logout_btn").css("display", "none");
+            }
+        })   
+    }
 })
 
