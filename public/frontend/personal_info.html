@@ -31,41 +31,6 @@
 
 <body>
     <div id="Nav-bar"></div>
-    <!-- Start: Sidebar -->
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xl-12" style="height: 3000px;">
-                    <div class="card" id="login" style="margin-bottom: 12px;">
-                        <div class="card-body">
-                            <h4 class="text-center card-title">登入 &amp; 登出</h4>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="margin-top: 20px;"><div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="false" data-width=""></div></div>
-                        </div>
-                    </div>
-                    <div class="card" id="wallet" style="margin-bottom: 12px;">
-                        <div class="card-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="text-center card-title">提領說明</h4>
-                                    <p class="card-text">- 兩百塊以下領錢的人，你全家確診<br>- 兩百塊以上領錢的人，QWER</p>
-                                </div>
-                            </div>
-                            <!-- Start: Toggle Switches -->
-                            <fieldset>
-                                <div><label class="text-center" style="width: 100%;margin-top: 82px;">您的帳戶餘額：87$</label></div>
-                                <legend class="text-center" style="width: 100%;">是否提領</legend>
-                                <div class="d-xl-flex justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="cond_new" name="bike_cond" checked="checked"><label for="cond_new">是</label><input type="radio" id="cond_used" name="bike_cond"><label for="cond_used">否</label></div>
-                            </fieldset>
-                            <!-- End: Toggle Switches --><a class="card-link" href="#create_password" data-toggle="modal">Link</a><a class="card-link" href="#confirm_password" data-toggle="modal">Link</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End: Sidebar -->
-    <!-- Start: Bold BS4 Animated Back To Top --><a class="cd-top js-cd-top cd-top--fade-out cd-top--show" style="background-image:url(&quot;assets/img/cd-top-arrow.svg&quot;);" href="#0">Top</a>
-    <!-- End: Bold BS4 Animated Back To Top -->
-    <div id="Footer"></div>
     <div class="modal fade" role="dialog" tabindex="-1" id="create_password">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -91,40 +56,47 @@
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
             </div>
         </div>
-    </div><!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyD7zmd0TZzynS5j17u4QF0cDKIWJzMgulc",
-    authDomain: "stubborn-toy.firebaseapp.com",
-    databaseURL: "https://stubborn-toy.firebaseio.com",
-    projectId: "stubborn-toy",
-    storageBucket: "stubborn-toy.appspot.com",
-    messagingSenderId: "72000445740",
-    appId: "1:72000445740:web:7dc8a7b12db8e4c1a0a089",
-    measurementId: "G-RZYHVBHEGR"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
+    </div>
+    <!-- Start: 1 Row 1 Column -->
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" id="wallet" style="margin-bottom: 12px;">
+                        <div class="card-body">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="text-center card-title">提領說明</h4>
+                                    <p class="card-text">- 兩百塊以下領錢的人，你全家確診<br>- 兩百塊以上領錢的人，QWER</p>
+                                </div>
+                            </div>
+                            <!-- Start: Toggle Switches -->
+                            <fieldset>
+                                <div><label class="text-center" style="width: 100%;margin-top: 82px;">您的帳戶餘額：87$</label></div>
+                                <legend class="text-center" style="width: 100%;">是否提領</legend>
+                                <div class="d-xl-flex justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="cond_new" name="bike_cond" checked="checked"><label for="cond_new">是</label><input type="radio" id="cond_used" name="bike_cond"><label for="cond_used">否</label></div>
+                            </fieldset>
+                            <!-- End: Toggle Switches --><a class="card-link" href="#create_password" data-toggle="modal">Link</a><a class="card-link" href="#confirm_password" data-toggle="modal">Link</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: 1 Row 1 Column -->
+    <div id="Footer"></div>
+    <!-- Start: Bold BS4 Animated Back To Top --><a class="cd-top js-cd-top cd-top--fade-out cd-top--show" style="background-image:url(&quot;assets/img/cd-top-arrow.svg&quot;);" href="#0">Top</a>
+    <!-- End: Bold BS4 Animated Back To Top -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/base64.js"></script>
     <script src="assets/js/Bold-BS4-Animated-Back-To-Top.js"></script>
-    <script src="assets/js/fb-login.js"></script>
     <script src="assets/js/fb-sdk.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/load_fragment.js"></script>
+    <script src="assets/js/login_logout.js"></script>
     <script src="assets/js/submit_clarification.js"></script>
     <script src="assets/js/submit_news.js"></script>
 </body>
