@@ -1,3 +1,7 @@
 FB.getLoginStatus(function(response) {
-    console.log(response);
+    if (response.status === 'connected') {
+        FB.api('/me', function(response) {
+            console.log(JSON.stringify(response));
+        });
+    }
 });
