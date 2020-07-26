@@ -29,7 +29,6 @@ window.fbAsyncInit = function() {
       version    : '{api-version}'           // Use this Graph API version for this call.
     });
     // Called after the JS SDK has been initialized.
-    
 };
 
 // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
