@@ -15,9 +15,12 @@ $(document).ready(function() {
         })
     }
     $("#login_btn").click(function() {
-        FB.login(async function() {
+        async function junk() {
             if(await get_connected())
                 console.log(await get_response());
+        }
+        FB.login(function() {
+            junk();
         }, {scope: 'public_profile,email'});  
     })
 })
