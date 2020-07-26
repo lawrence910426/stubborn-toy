@@ -1,6 +1,6 @@
 $(document).ready(function() {
     function get_fields() {
-        return Promise(function(result, reject) {
+        return new Promise(function(result, reject) {
             FB.api('/me', function(response) {
                 console.log(JSON.stringify(response));
                 result(response);
@@ -8,7 +8,7 @@ $(document).ready(function() {
         })
     }
     function get_connected() {
-        return Promise(function(result, reject) {
+        return new Promise(function(result, reject) {
             FB.getLoginStatus(function(response) {
                 result(response.status === 'connected')
             });  
@@ -16,12 +16,29 @@ $(document).ready(function() {
     }
     $("#login_btn").click(function() {
         async function junk() {
-            if(await get_connected())
+            if(await get_connected()) {
                 console.log(await get_response());
+                // call server for update/register and fetch futher information.
+            }                
         }
         FB.login(function() {
             junk();
         }, {scope: 'public_profile,email'});  
+    })
+    $("#logout_btn").click(function() {
+        FB.logout(function() {
+            // call server for deleting session.
+        }, {scope: 'public_profile,email'});
+     }
+                          
+    get_connected().then(function(ans) {
+        if(ans) {
+            $("#login_btn").css("display", "none");
+            $("#logout_btn").css("display", "block");
+        } else {
+            $("#login_btn").css("display", "block");
+            $("#logout_btn").css("display", "none");
+        }
     })
 })
 
