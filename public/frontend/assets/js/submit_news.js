@@ -73,7 +73,7 @@ $(document).ready(function() {
     function init_cropper() {
         var $image = $('#Abstract_Preview_Small');
             $image.cropper({
-              aspectRatio: 1 / 1,
+              aspectRatio: 4 / 3,
               crop: function(event) {
                 /* console.log(event.detail.x);
                 console.log(event.detail.y);
