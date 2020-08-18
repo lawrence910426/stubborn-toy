@@ -1,0 +1,3 @@
+D:\github\stubborn-toy\Backend\Backend\obj\Debug\Backend.njsprojAssemblyReference.cache
+D:\github\stubborn-toy\Backend\Backend\obj\Debug\Backend.njsproj.CoreCompileInputs.cache
+D:\github\stubborn-toy\Backend\Backend\bin\Microsoft.NodejsTools.WebRole.dll
