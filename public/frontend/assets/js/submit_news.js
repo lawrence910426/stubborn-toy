@@ -29,12 +29,30 @@ async function getImgurLink(content) {
 
 
 $(document).ready(function() {
-    var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
+    const greeting_template = `# 寫作指引
+- - -
+
+- 玩具廠牌、角色名稱、玩具角色相關台詞、特色。
+- 介紹廠牌、設計師的特色、玩具角色的背景故事、外型特色、配件、特別之處、參考價格、發售日期，利用不同的資訊豐富文章。
+- 文字或影音連結穿插在圖片中也會增加文章豐富性。
+
+# 操作指引
+- - -
+
+三個減號可以做出分隔線，在上方上傳圖片後，即可得到圖片連結。
+
+在編輯器中，使用兩個換行可以製造一個換行；在編輯器中，一個星號可以做出*斜體*，兩個星號可以做出**粗體**，~~真是太好用了吧~~。
+`;
+    var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
+    simplemde.value(greeting_template);
+
     
-    var converter = new showdown.Converter();
+    var converter = new showdown.Converter({
+        strikethrough: true
+    });
     var prev_text = ""
     function update() {
-        var text = simplemde.value();
+        var text = simplemde.value();
         if(text == prev_text) return;
         var html = converter.makeHtml(text);
         $("#rendered").empty().append(html);
@@ -58,14 +76,17 @@ $(document).ready(function() {
             done();
         }
     });
-    
     var Img_DropZone = new Dropzone('#Upload_Box', {
         url: '/',
         accept: async function(file, done) {
             var content = await getBase64(file);
             content = content.split(",")[1];
             var link = await getImgurLink(content);
-            $("#Image_Link").text(link);
+            $("#Generated_Image_Link").text(link);
+            $("#Generated_Image_Link").attr("href", link);
+            const pos = simplemde.codemirror.getCursor();
+            simplemde.codemirror.setSelection(pos, pos);
+            simplemde.codemirror.replaceSelection("\n![](" + link + ")\n");
             done();
         }
     });
