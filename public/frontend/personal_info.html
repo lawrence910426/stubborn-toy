@@ -66,18 +66,19 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-xl-8 offset-xl-2">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="text-center card-title">提領說明</h4>
-                            <p class="text-center card-text">提領金額為帳戶剩餘所有金額，若提領金額兩百元以上(包含)，則不需扣除轉帳手續費15元</p>
+                            <p class="text-center card-text">提領金額為帳戶剩餘所有金額，若提領金額兩百元以上(包含)，則不需扣除轉帳手續費15元。</p>
+                            <p class="text-center card-text">選擇要提領後，在結算日時，帳戶餘額將全數匯款到您的銀行帳號。</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div style="height: 50px;"></div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-xl-6 offset-xl-3">
                     <div class="card" id="wallet" style="margin-bottom: 12px;">
                         <div class="card-body">
                             <div><label class="text-center" style="width: 100%;font-size: 30px;">您的帳戶餘額：87$</label></div>
@@ -92,9 +93,15 @@
             </div>
             <div style="height: 50px;"></div>
             <div class="row">
-                <div class="col-md-12 col-xl-4"></div>
-                <div class="col-md-12 col-xl-4"></div>
-                <div class="col-md-12 col-xl-4"></div>
+                <div class="col-md-12 col-xl-6 offset-xl-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">您的銀行帳戶</h4>
+                            <div><input type="text" style="width: 100%;margin-bottom: 12px;" placeholder="您的行號(033)"><input type="text" style="width: 100%;margin-bottom: 12px;" placeholder="您的銀行帳戶 (0123456789)"></div>
+                            <div class="d-xl-flex justify-content-xl-end"><button class="btn btn-primary" type="button" style="background-color: rgb(0,0,0);">儲存</button></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -116,6 +123,7 @@
     <script src="assets/js/3rd_Party/jquery-cropper.js"></script>
     <script src="assets/js/3rd_Party/jquery.base64.js"></script>
     <script src="assets/js/3rd_Party/Scroll-to-top.js"></script>
+    <script src="assets/js/advertisement.js"></script>
     <script src="assets/js/index.js"></script>
     <script src="assets/js/load_fragment.js"></script>
     <script src="assets/js/login_logout.js"></script>
