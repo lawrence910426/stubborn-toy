@@ -76,6 +76,17 @@ $(document).ready(function() {
             done();
         }
     });
+    var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
+        url: '/',
+        maxFiles: 1,
+        accept: async function(file, done) {
+            var content = await getBase64(file);
+            content = content.split(",")[1];
+            var link = await getImgurLink(content);
+            $("#Headline_Preview_Small").attr("src", link);
+            done();
+        }
+    });
     var Img_DropZone = new Dropzone('#Upload_Box', {
         url: '/',
         accept: async function(file, done) {
