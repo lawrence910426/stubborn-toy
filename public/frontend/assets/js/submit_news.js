@@ -29,13 +29,7 @@ async function getImgurLink(content) {
 
 
 $(document).ready(function() {
-    const greeting_template = `# 寫作指引
-- - -
-
-- 玩具廠牌、角色名稱、玩具角色相關台詞、特色。
-- 介紹廠牌、設計師的特色、玩具角色的背景故事、外型特色、配件、特別之處、參考價格、發售日期，利用不同的資訊豐富文章。
-- 文字或影音連結穿插在圖片中也會增加文章豐富性。
-
+    const greeting_template = `
 # 操作指引
 - - -
 
