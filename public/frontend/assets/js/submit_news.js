@@ -29,13 +29,12 @@ async function getImgurLink(content) {
 
 
 $(document).ready(function() {
-    const greeting_template = `
-# 操作指引
+    const greeting_template = `# 操作指引
 - - -
 
 三個減號可以做出分隔線，在上方上傳圖片後，即可得到圖片連結。
 
-在編輯器中，使用兩個換行可以製造一個換行；在編輯器中，一個星號可以做出*斜體*，兩個星號可以做出**粗體**，~~真是太好用了吧~~。
+在編輯器中，使用兩個換行可以製造一個換行；在編輯器中，一個星號可以做出*斜體*，兩個星號可以做出**粗體**。
 `;
     var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
     simplemde.value(greeting_template);
@@ -66,7 +65,7 @@ $(document).ready(function() {
             content = content.split(",")[1];
             var link = await getImgurLink(content);
             $("#Abstract_Preview_Small").attr("src", link);
-            init_cropper();
+            init_cropper('#Abstract_Preview_Small', 3 / 4);
             done();
         }
     });
@@ -78,6 +77,7 @@ $(document).ready(function() {
             content = content.split(",")[1];
             var link = await getImgurLink(content);
             $("#Headline_Preview_Small").attr("src", link);
+            init_cropper('#Headline_Preview_Small', 4 / 3);
             done();
         }
     });
@@ -96,10 +96,10 @@ $(document).ready(function() {
         }
     });
     
-    function init_cropper() {
-        var $image = $('#Abstract_Preview_Small');
+    function init_cropper(name, ratio) {
+        var $image = $(name);
             $image.cropper({
-              aspectRatio: 4 / 3,
+              aspectRatio: ratio,
               crop: function(event) {
                 /* console.log(event.detail.x);
                 console.log(event.detail.y);
