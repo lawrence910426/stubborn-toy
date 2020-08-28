@@ -77,7 +77,7 @@ $(document).ready(function() {
             content = content.split(",")[1];
             var link = await getImgurLink(content);
             $("#Headline_Preview_Small").attr("src", link);
-            init_cropper('#Headline_Preview_Small', 4 / 3);
+            init_cropper('#Headline_Preview_Small', 16 / 9);
             done();
         }
     });
