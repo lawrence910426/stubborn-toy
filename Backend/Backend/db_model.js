@@ -1,0 +1,59 @@
+module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: false }) => {
+    class user extends Model { }
+    user.init({
+        id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
+        facebook_id: { type: Sequelize.STRING, allowNull: false },
+        name: { type: Sequelize.STRING, allowNull: false },
+        admin: { type: DataTypes.BOOLEAN, allowNull: false },
+        balance: { type: Sequelize.INTEGER, allowNull: false },
+        withdraw: { type: DataTypes.BOOLEAN, allowNull: false },
+        bank_id: { type: Sequelize.STRING, allowNull: false },
+        bank_account: { type: Sequelize.STRING, allowNull: false }
+    }, { sequelize });
+    class transfer extends Model { }
+    transfer.init({
+        id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
+        user_id: { type: Sequelize.INTEGER, allowNull: false },
+        reason: { type: Sequelize.STRING, allowNull: false },
+        amount: { type: DataTypes.INTEGER, allowNull: false },
+        datetime: { type: 'TIMESTAMP', defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') }
+    }, { sequelize });
+    class news extends Model { }
+    news.init({
+        id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
+        user_id: { type: Sequelize.INTEGER, allowNull: false },
+        title: { type: DataTypes.STRING, allowNull: false },
+        content: { type: Sequelize.TEXT , allowNull: false },
+        normal_image_link: { type: DataTypes.STRING, allowNull: false },
+        headline_image_link: { type: DataTypes.STRING, allowNull: false },
+        category: { type: DataTypes.STRING, allowNull: false },
+        datetime: { type: 'TIMESTAMP', defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
+        is_headline: { type: DataTypes.BOOLEAN, allowNull: false },
+        is_hot: { type: DataTypes.BOOLEAN, allowNull: false },
+        is_interview: { type: DataTypes.BOOLEAN, allowNull: false },
+        is_shown: { type: DataTypes.BOOLEAN, allowNull: false },
+        notify: { type: DataTypes.BOOLEAN, allowNull: false },
+        email: { type: DataTypes.STRING, allowNull: false },
+        views: { type: DataTypes.STRING, allowNull: false, defaultValue: 0 },
+    }, { sequelize });
+
+    user.hasMany(transfer, { foreignKey: "transfer_record" });
+    transfer.belongsTo(user, { foreignKey: "transfer_record" });
+
+    user.hasMany(news, { foreignKey: "user_to_news" });
+    news.belongsTo(user, { foreignKey: "user_to_news" });
+
+    return {
+        user: user,
+        transfer: transfer,
+        news: news,
+        sync: new Promise((resolve, reject) => {
+            async function sync() {
+                await user.sync(option)
+                await transfer.sync(option)
+                await news.sync(option)
+            }
+            sync.then(resolve).catch(reject)
+        })
+    };
+});
