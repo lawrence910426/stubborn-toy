@@ -80,8 +80,7 @@ $(document).ready(function() {
             init_cropper('#Headline_Preview_Small', 16 / 9);
             done();
         }
-    });
-    var Img_DropZone = new Dropzone('#Upload_Box', {
+    });    var Img_DropZone = new Dropzone('#Upload_Box', {
         url: '/',
         accept: async function(file, done) {
             var content = await getBase64(file);
@@ -114,4 +113,8 @@ $(document).ready(function() {
         // Get the Cropper.js instance after initialized
         var cropper = $image.data('cropper');
     }
+    
+    $(window).bind('beforeunload', function(){
+        return 'Leaving the website';
+   });
 });
