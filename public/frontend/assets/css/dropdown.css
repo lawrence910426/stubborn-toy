@@ -6,7 +6,8 @@
   padding: 10px;
   font-size: 16px;
   border: none;
-  width: 132px;
+  min-width: 132px;
+  max-width: 200px;
   color: #000000;
   margin: 0px;
   font-color: #000000;
@@ -17,7 +18,6 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  z-index: 1000;
 }
 
 /*  Dropdown Content (Hidden by Default)  */
@@ -28,7 +28,7 @@
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 1000;
 }
 
 /*  Links inside the dropdown  */
