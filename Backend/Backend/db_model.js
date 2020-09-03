@@ -21,7 +21,6 @@ module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: fal
     class news extends Model { }
     news.init({
         id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-        user_id: { type: Sequelize.INTEGER, allowNull: false },
         title: { type: DataTypes.STRING, allowNull: false },
         content: { type: Sequelize.TEXT , allowNull: false },
         normal_image_link: { type: DataTypes.STRING, allowNull: false },
@@ -40,20 +39,20 @@ module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: fal
     user.hasMany(transfer, { foreignKey: "transfer_record" });
     transfer.belongsTo(user, { foreignKey: "transfer_record" });
 
-    user.hasMany(news, { foreignKey: "user_to_news" });
-    news.belongsTo(user, { foreignKey: "user_to_news" });
+    user.hasMany(news, { foreignKey: "user_to_news", as: "author" });
+    news.belongsTo(user, { foreignKey: "user_to_news", as: "author" });
 
     return {
         user: user,
         transfer: transfer,
         news: news,
-        sync: new Promise((resolve, reject) => {
-            async function sync() {
+        sync: new Promise(async (resolve, reject) => {
+            try {
                 await user.sync(option)
-                await transfer.sync(option)
                 await news.sync(option)
-            }
-            sync.then(resolve).catch(reject)
+                await transfer.sync(option)
+                resolve()
+            } catch (ex) { reject(ex) }
         })
     };
 });
