@@ -12,7 +12,7 @@ module.exports = {
             }
         }, connection: {
             http: {
-                port: 1337,
+                port: 80,
                 auto_redirect: false
             }
         }, news_template: "aaaaaa.html"
