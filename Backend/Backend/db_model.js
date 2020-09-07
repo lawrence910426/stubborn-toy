@@ -31,6 +31,7 @@ module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: fal
         is_hot: { type: DataTypes.BOOLEAN, allowNull: false },
         is_interview: { type: DataTypes.BOOLEAN, allowNull: false },
         is_shown: { type: DataTypes.BOOLEAN, allowNull: false },
+        is_advanced: { type: DataTypes.BOOLEAN, allowNull: false },
         notify: { type: DataTypes.BOOLEAN, allowNull: false },
         email: { type: DataTypes.STRING, allowNull: false },
         views: { type: DataTypes.STRING, allowNull: false, defaultValue: 0 },

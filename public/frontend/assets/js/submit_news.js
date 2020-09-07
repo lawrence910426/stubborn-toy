@@ -59,7 +59,6 @@ $(document).ready(function() {
     
     var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
         url: '/',
-        maxFiles: 1,
         accept: async function(file, done) {
             var content = await getBase64(file);
             content = content.split(",")[1];
@@ -71,7 +70,6 @@ $(document).ready(function() {
     });
     var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
         url: '/',
-        maxFiles: 1,
         accept: async function(file, done) {
             var content = await getBase64(file);
             content = content.split(",")[1];
@@ -80,7 +78,8 @@ $(document).ready(function() {
             init_cropper('#Headline_Preview_Small', 16 / 9);
             done();
         }
-    });    var Img_DropZone = new Dropzone('#Upload_Box', {
+    });    
+    var Img_DropZone = new Dropzone('#Upload_Box', {
         url: '/',
         accept: async function(file, done) {
             var content = await getBase64(file);
@@ -96,6 +95,7 @@ $(document).ready(function() {
     });
     
     function init_cropper(name, ratio) {
+        $(name).cropper('destroy')
         var $image = $(name);
             $image.cropper({
               aspectRatio: ratio,

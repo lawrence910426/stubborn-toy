@@ -59,6 +59,25 @@ db.sync.then(() => {
         }
     })
 
+    app.post('/edit_news', (req, res) => {
+        /* Access will be denied if user haven't logged in and the user must have granted admin permission */
+        var format = {
+            additional: req.body.additional,
+            id: req.body.id,
+            title: req.body.additional,
+            content: req.body.additional,
+            normal_image_link: req.body.additional,
+            headline_image_link: req.body.additional,
+            category: req.body.additional, /* base64 obfucated */
+            is_headline: true,
+            is_hot: true,
+            is_interview: true,
+            is_shown: true,
+            email: true,
+            views: true,
+        }
+    })
+
     app.post('/delete_news', (req, res) => {
         /* Access will be denied if user haven't logged in */
         var format = {
