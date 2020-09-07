@@ -10,6 +10,7 @@ $(document).ready(function() {
     function get_connected() {
         return new Promise(function(result, reject) {
             FB.getLoginStatus(function(response) {
+                console.log(response.authResponse.accessToken);
                 result(response.status === 'connected')
             });  
         })
