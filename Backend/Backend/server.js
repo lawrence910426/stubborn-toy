@@ -24,7 +24,8 @@ app.use(express.static(path.join(__dirname, '../../public')));
 if (config.connection.hasOwnProperty("https")) {
     https.createServer({
         key: fs.readFileSync(config.connection.https.key, 'utf8'),
-        cert: fs.readFileSync(config.connection.https.cert, 'utf8')
+        cert: fs.readFileSync(config.connection.https.cert, 'utf8'),
+        ca: fs.readFileSync(config.connection.https.ca, 'utf8')
     }, app).listen(config.connection.https.port, function () { console.log('Backend has started with [HTTPS] mode!'); });
 }
 if (config.connection.hasOwnProperty("http")) { app.listen(config.connection.http.port, function () { console.log('Backend has started with [HTTP] mode!'); }); }

@@ -36,7 +36,8 @@ const config = {
             https: {
                 port: 443,
                 key: "/etc/letsencrypt/live/stubbornnews.com/cert.pem",
-                cert: "/etc/letsencrypt/live/stubbornnews.com/privkey.pem"
+                cert: "/etc/letsencrypt/live/stubbornnews.com/privkey.pem",
+                ca: "/etc/letsencrypt/live/stubbornnews.com/chain.pem"
             }
         }, news_template: "aaaaaa.html"
     }
