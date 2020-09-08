@@ -24,7 +24,7 @@ module.exports = ((db, Op) => {
 
         var criteria = {
             attributes: {
-                exclude: (req.session.self || req.session.self.admin ? ['user_to_news'] : ['user_to_news', 'user_id', 'notify', 'email']),
+                exclude: (req.session.self && req.session.self.admin ? ['user_to_news'] : ['user_to_news', 'user_id', 'notify', 'email']),
             },
             include: [{
                 model: db.user,

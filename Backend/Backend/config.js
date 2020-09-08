@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
     development: {
         database: {
             db_name: 'stubborntoy',
@@ -12,7 +12,7 @@ module.exports = {
             }
         }, connection: {
             http: {
-                port: 80,
+                port: 1337,
                 auto_redirect: false
             }
         }, news_template: "aaaaaa.html"
@@ -40,4 +40,9 @@ module.exports = {
             }
         }, news_template: "aaaaaa.html"
     }
-};
+}
+
+module.exports = ((process) => {
+    if (process.platform == "linux") return config.production;
+    else return config.development;
+});
