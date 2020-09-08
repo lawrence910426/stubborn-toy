@@ -31,12 +31,7 @@ const config = {
         }, connection: {
             http: {
                 port: 80,
-                auto_redirect: true
-            },
-            https: {
-                port: 443,
-                key: "",
-                cert: ""
+                auto_redirect: false,
             }
         }, news_template: "aaaaaa.html"
     }
