@@ -36,7 +36,7 @@ const config = {
             https: {
                 port: 443,
                 key: "/etc/letsencrypt/keys/0004_key-certbot.pem",
-                key: "/etc/letsencrypt/csr/0004_csr-certbot.pem",
+                cert: "/etc/letsencrypt/csr/0004_csr-certbot.pem"
             }
         }, news_template: "aaaaaa.html"
     }
