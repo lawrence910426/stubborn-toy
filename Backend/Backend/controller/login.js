@@ -1,10 +1,15 @@
 module.exports = ((sequelize, db, https) => {
     function get_name(id, token) {
         return new Promise((resolve, reject) => {
-            https.get('https://graph.facebook.com/${id}/?fields=name&access_token=${token}', (resp) => {
+            var url = `https://graph.facebook.com/${id}/?fields=name&access_token=${token}`
+            https.get(url, (resp) => {
                 let data = '';
                 resp.on('data', (chunk) => { data += chunk; });
-                resp.on('end', () => { resolve(data); });
+                resp.on('end', () => {
+                    data = JSON.parse(data)
+                    if (data.hasOwnProperty("name")) resolve(data.name);
+                    else reject("Malformed information from facebook")
+                });
             }).on("error", reject);
         })
     }
@@ -18,7 +23,7 @@ module.exports = ((sequelize, db, https) => {
         /* --------------------------- */
 
         var user_name;
-        try { user_name = await get_name(); }
+        try { user_name = await get_name(inputs.facebook_id, inputs.access_token); }
         catch (ex) {
             console.log(ex)
             res.send("Invalid token");
@@ -28,8 +33,8 @@ module.exports = ((sequelize, db, https) => {
         const t = await sequelize.transaction();
         var self;
         try {
-            self = db.user.findAll({ where: { facebook_id: inputs.facebook_id } })
-            if (user.self == 0) {
+            self = await db.user.findAll({ where: { facebook_id: inputs.facebook_id } })
+            if (self.length == 0) {
                 self = await db.user.create({
                     facebook_id: inputs.facebook_id,
                     name: user_name,

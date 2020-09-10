@@ -42,18 +42,22 @@
       <SubType>Code</SubType>
       <TestFramework>Mocha</TestFramework>
     </Content>
-    <Content Include="utilities\get_news.js">
+    <Content Include="controller\get_news.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="utilities\login.js">
+    <Content Include="controller\login.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="utilities\show_news.js">
+    <Content Include="controller\show_news.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="view\generate_post.js">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="utilities\" />
+    <Folder Include="controller\" />
+    <Folder Include="view\" />
     <Folder Include="test\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

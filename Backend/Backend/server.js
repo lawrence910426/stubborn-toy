@@ -39,7 +39,7 @@ db.sync.then(() => {
         else res.redirect('https://' + req.headers.host + req.url);
     })
 
-    app.post('/get_news', require('./utilities/get_news.js')(db, Op))
+    app.post('/get_news', require('./controller/get_news.js')(db, Op))
 
     app.post('/post_news', (req, res) => {
         /* Access will be denied if user haven't logged in */
@@ -86,12 +86,9 @@ db.sync.then(() => {
         }
     })
 
-    app.get('/show_news/{$id}', (req, res) => {
-        /* showdown.render */
-        /* news += 1 */
-    })
+    app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
 
-    app.post('/login', require('./utilities/login.js')(sequelize, db, https))
+    app.post('/login', require('./controller/login.js')(sequelize, db, https))
 
     app.post('/logout', (req, res) => {
         if (req.session.self === undefined) res.send("Access denied")

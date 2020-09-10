@@ -15,7 +15,9 @@ const config = {
                 port: 1337,
                 auto_redirect: false
             }
-        }, news_template: "aaaaaa.html"
+        },
+        news_template: "../../public/frontend/news.html",
+        public: "../../public"
     },
     production: {
         database: {
@@ -39,7 +41,9 @@ const config = {
                 cert: "/certs/certificate.crt",
                 ca: "/certs/ca_bundle.crt"
             }
-        }, news_template: "aaaaaa.html"
+        },
+        news_template: "aaaaaa.html",
+        public: "../../public"
     }
 }
 
