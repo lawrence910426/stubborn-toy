@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var text = `
+    /*var text = `
 Mezco Toys MDS Mega Scale 15英吋「It」「潘尼懷斯」來了！You'll float too！ 
 
 Mezco Toys是一間以製作恐怖可動人偶系列聞名的美系廠牌，Mezco Toys旗下MDS Mega Scale品牌人偶系列「潘尼懷斯」又開始預購了！
@@ -19,5 +19,5 @@ Mezco Toys是一間以製作恐怖可動人偶系列聞名的美系廠牌，Mezc
 `
     var converter = new showdown.Converter();
     var html = converter.makeHtml(text);
-    $("#post_content").empty().append(html);
+    $("#post_content").empty().append(html);*/
 })

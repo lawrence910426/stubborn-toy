@@ -17,11 +17,15 @@ module.exports = async (news, config) => {
     }
 
     try {
+        console.log(news)
         var html = converter.makeHtml(news.content);
         var root = HTMLParser.parse(await read_template());
-        root.querySelector(".post_content").set_content(html)
-
-        /* Views, author, date, category, title */
+        root.querySelector("#post_content").set_content(html)
+        root.querySelector("#title").set_content('[' + news.category + ']' + news.title)
+        /* root.querySelector("#views").set_content(```瀏覽次數：${news.views} 次```)
+        root.querySelector("#author").set_content(```作者：${news.author}```)
+        root.querySelector("#date").set_content(```投稿日期：${news.date}```)
+        root.querySelector("#category").set_content(```${news.category}```) */
         return root.toString();
     } catch (ex) {
         console.log(ex)
