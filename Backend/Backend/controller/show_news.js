@@ -6,7 +6,14 @@ module.exports = ((db, config) => {
         /* ---------------------------------- */
         const input = { id: req.params.id }
         /* ---------------------------------- */
-        var news = await db.news.findAll({ where: { id: input.id } })
+        var news = await db.news.findAll({
+            where: { id: input.id },
+            include: [{
+                model: db.user,
+                attributes: ['name'],
+                as: "author"
+            }]
+        })
         if (news.length == 0) {
             res.send("id not found")
         } else {
@@ -16,16 +23,13 @@ module.exports = ((db, config) => {
                     title: news.title,
                     content: news.content,
                     views: news.views,
-                    //author: news.author,
+                    author: news.author.name,
                     date: news.datetime,
                     category: news.category
                 },
                 config
             ])
-                .then(function (result) {
-                    console.log('result', result);
-                    res.send(result)
-                })
+                .then(function (result) { res.send(result) })
                 .catch(function (err) { console.error(err); })
                 .then(function () { pool.terminate(); })
         }
