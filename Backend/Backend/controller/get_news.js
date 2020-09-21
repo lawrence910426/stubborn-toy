@@ -20,7 +20,11 @@ module.exports = ((db, Op) => {
             is_hot: req.body.hot
         }
         var clause = []
-        for (var key in inputs) if (inputs[key] === null) clause.push({ key: inputs[key] })
+        for (var key in inputs) if (inputs[key] !== undefined) {
+            var temp = {};
+            temp[key] = inputs[key]
+            clause.push(temp)
+        }
 
         var criteria = {
             attributes: {

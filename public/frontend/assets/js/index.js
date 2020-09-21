@@ -8,16 +8,71 @@ $(document).ready(function() {
             <div class="d-sm-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center"><img class="flex-grow-0 flex-shrink-0" src="${news.headline_image_link}" alt="Slide Image" style="width: 100%;" /></div>
         </div>`
     }
+    
+    function gen_news(news) {
+        return `<div class="col-6 col-md-4">
+    <div class="view_news" style="width: 100%;height: 100%;" news_id="1"><img src="${news.normal_image_link}" style="width: 100%;" /><label class="text-left" style="width: 100%;height: 66px;">${news.title}</label></div>
+</div>`;
+    }
+    
+    function gen_interview(news) {
+        return `<div class="view_news" news_id="3" style="width: 100%;"><label class="text-left d-xl-flex justify-content-xl-start" style="width: 100%;">${news.title}</label>
+    <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="margin-bottom: 12px;"><img src="${news.normal_image_link}" /></div>
+</div>`
+    }
+    
+    function gen_hot(news) {
+        return `<div>
+    <hr />
+    <div class="row">
+        <div class="col-4 col-xl-3"><img style="width: 100%;" src="${news.normal_image_link}" /></div>
+        <div class="col" style="padding-left: 0px;">
+            <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-start" style="  width: 100%;
+  height: 100%;
+"><label class="text-left" style="  width: 100%;
+">${news.title}</label></div>
+        </div>
+    </div>
+</div>`
+    }
+    
     $.post(config.host + "get_news", 
-           {"paging": { "offset": 0, "limit": 3 }}
+           {"headline": 1, "paging": { "offset": 0, "limit": 5 }}
     ).done(function(data) {
         data = JSON.parse(data)
         data.forEach((element, i) => {
-            console.log(element)
             $("#headline_carousel").append(gen_headline(element, i == 0 ? "active" : "")) 
             $("#headline_indicator").append(`<li data-target="#carousel-1" data-slide-to="${i}" class=""></li>`)
         });
     })
+    
+    $.post(config.host + "get_news", 
+           {"interview": 1, "paging": { "offset": 0, "limit": 5 }}
+    ).done(function(data) {
+        data = JSON.parse(data)
+        data.forEach((element, i) => {
+            $("#hot_news").append(gen_hot(element))
+        });
+    })
+    
+    $.post(config.host + "get_news", 
+           {"hot": 1, "paging": { "offset": 0, "limit": 5 }}
+    ).done(function(data) {
+        data = JSON.parse(data)
+        data.forEach((element, i) => {
+            $("#interview_news").append(gen_interview(element))
+        });
+    })
+    
+    $.post(config.host + "get_news", 
+           {"headline": 0, "interview": 0, "hot": 0, "paging": { "offset": 0, "limit": 18 }}
+    ).done(function(data) {
+        data = JSON.parse(data)
+        data.forEach((element, i) => {
+            $("#normal_news").append(gen_news(element))
+        });
+    })
+    
     $(".view_news").click(function() {
         window.location = "frontend/news/" + $(this).attr("news_id");
     })
