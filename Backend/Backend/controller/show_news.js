@@ -14,12 +14,12 @@ module.exports = ((db, config) => {
                 as: "author"
             }]
         })
-        news.views += 1
-        await news.save()
         if (news.length == 0) {
             res.send("id not found")
         } else {
             news = news[0]
+            news.views += 1
+            await news.save()
             pool.exec(require("../view/generate_post.js"), [
                 {
                     title: news.title,
