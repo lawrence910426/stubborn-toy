@@ -47,7 +47,7 @@ db.sync.then(() => {
 
     app.post('/delete_news', require('./controller/delete_news.js')(db))
 
-    app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
+    app.get(`/frontend/news/:id`, require('./controller/show_news.js')(db, config))
 
     app.post('/login', require('./controller/login.js')(sequelize, db, https))
 

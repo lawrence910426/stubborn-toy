@@ -35,10 +35,11 @@ module.exports = ((db, Op) => {
             order: [['id', 'DESC']],
         }
         if (req.body.hasOwnProperty("paging") && req.body.paging.hasOwnProperty("limit") && req.body.paging.hasOwnProperty("offset")) {
-            criteria.limit = req.body.paging.limit;
-            criteria.offset = req.body.paging.offset;
+            criteria.limit = parseInt(req.body.paging.limit);
+            criteria.offset = parseInt(req.body.paging.offset);
         }
 
-        res.send(JSON.stringify(await db.news.findAll(criteria)))
+        const ret = await db.news.findAll(criteria)
+        res.send(JSON.stringify(ret.map(x => x.toJSON())))
     }
 });
