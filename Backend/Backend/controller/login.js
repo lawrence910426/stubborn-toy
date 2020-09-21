@@ -33,7 +33,10 @@ module.exports = ((sequelize, db, https) => {
         const t = await sequelize.transaction();
         var self;
         try {
-            self = await db.user.findAll({ where: { facebook_id: inputs.facebook_id } })
+            self = await db.user.findAll({
+                where: { facebook_id: inputs.facebook_id },
+                transaction: t
+            })
             if (self.length == 0) {
                 self = await db.user.create({
                     facebook_id: inputs.facebook_id,
@@ -43,13 +46,13 @@ module.exports = ((sequelize, db, https) => {
                     withdraw: false,
                     bank_id: "",
                     bank_account: ""
-                });
+                }, { transaction: t });
             } else {
                 self = self[0];
                 self.name = user_name;
                 await self.save();
             }
-            await t.commit();
+            await t.commit({ transaction: t });
         } catch (error) {
             await t.rollback();
             console.log(error)

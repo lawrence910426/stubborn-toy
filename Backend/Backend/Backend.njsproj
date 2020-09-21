@@ -32,6 +32,15 @@
     <Content Include="config.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="controller\delete_news.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="controller\edit_news.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="controller\post_news.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="db_model.js">
       <SubType>Code</SubType>
     </Content>

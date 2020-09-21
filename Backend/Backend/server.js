@@ -41,50 +41,11 @@ db.sync.then(() => {
 
     app.post('/get_news', require('./controller/get_news.js')(db, Op))
 
-    app.post('/post_news', (req, res) => {
-        /* Access will be denied if user haven't logged in */
-        var format = {
-            additional: req.body.additional,
-            id: req.body.id,
-            title: req.body.additional,
-            content: req.body.additional,
-            normal_image_link: req.body.additional,
-            headline_image_link: req.body.additional,
-            category: req.body.additional, /* base64 obfucated */
-            is_headline: true,
-            is_hot: true,
-            is_interview: true,
-            is_shown: true,
-            email: true,
-            views: true,
-        }
-    })
+    app.post('/post_news', require('./controller/post_news.js')(db))
 
-    app.post('/edit_news', (req, res) => {
-        /* Access will be denied if user haven't logged in and the user must have granted admin permission */
-        var format = {
-            additional: req.body.additional,
-            id: req.body.id,
-            title: req.body.additional,
-            content: req.body.additional,
-            normal_image_link: req.body.additional,
-            headline_image_link: req.body.additional,
-            category: req.body.additional, /* base64 obfucated */
-            is_headline: true,
-            is_hot: true,
-            is_interview: true,
-            is_shown: true,
-            email: true,
-            views: true,
-        }
-    })
+    app.post('/edit_news', require('./controller/edit_news.js')(db))
 
-    app.post('/delete_news', (req, res) => {
-        /* Access will be denied if user haven't logged in */
-        var format = {
-            id: req.body.id
-        }
-    })
+    app.post('/delete_news', require('./controller/delete_news.js')(db))
 
     app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
 

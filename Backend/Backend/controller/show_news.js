@@ -14,6 +14,8 @@ module.exports = ((db, config) => {
                 as: "author"
             }]
         })
+        news.views += 1
+        await news.save()
         if (news.length == 0) {
             res.send("id not found")
         } else {
