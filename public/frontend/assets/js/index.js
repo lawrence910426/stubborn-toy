@@ -35,11 +35,32 @@ $(document).ready(function() {
     </div>
 </div>`
     }
-    var page = parseInt(new URL(window.location.href).searchParams.get("page"))
-    if(isNaN(page)) page = 0
     
-    console.log(page)
-    for(var i = 1;i <= 5;i++) $(`#${i} a`).text((i + page).toString())
+    function change_page(page) {
+        window.location.href = url.pathname + "?page=" + page
+    }
+    
+    var url = new URL(window.location.href)
+    var offset = parseInt(url.searchParams.get("page"))
+    if(isNaN(offset)) offset = 0
+    
+    var page = offset - 2
+    if(page < 0) page = 0
+    
+    for(var i = 1;i <= 5;i++) {
+        const clone = i + page - 1
+        $(`#${i} a`).text((i + page).toString()).click(function() {
+            change_page(clone)
+        })
+    }
+    
+    $(`#pagination_right`).click(function() {
+        change_page(offset + 1)
+    })
+    
+    $(`#pagination_left`).click(function() {
+        change_page(offset - 1)
+    })
     
     Promise.all([
         new Promise((res, rej) => {
@@ -78,7 +99,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"headline": 0, "interview": 0, "hot": 0, "paging": { "offset": page * 18, "limit": 18 }}
+                   {"headline": 0, "interview": 0, "hot": 0, "paging": { "offset": offset * 18, "limit": 18 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {

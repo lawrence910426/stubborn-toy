@@ -39,6 +39,8 @@ db.sync.then(() => {
         else res.redirect('https://' + req.headers.host + req.url);
     })
 
+    app.post('/withdraw', require('./controller/withdraw.js')())
+
     app.post('/get_news', require('./controller/get_news.js')(db, Op))
 
     app.post('/post_news', require('./controller/post_news.js')(db))

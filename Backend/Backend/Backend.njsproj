@@ -38,6 +38,9 @@
     <Content Include="controller\edit_news.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="controller\withdraw.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="controller\post_news.js">
       <SubType>Code</SubType>
     </Content>
