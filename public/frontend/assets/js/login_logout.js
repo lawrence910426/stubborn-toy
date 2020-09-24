@@ -16,12 +16,12 @@ var Login = {
         })
     },
     login: function() {
-        async function junk() {
+        async function junk(resp) {
             /* var token = await Login.get_connected()
             if(token === false) { */
-            var resp = await Login.get_fields()
+            var fields = await Login.get_fields()
             $.post(config.host + "login", 
-               {"facebook_id": resp.id, "access_token": token}
+               {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
             ).done(function(data) {
                 data = JSON.parse(data)
                 console.log(data)
@@ -29,8 +29,7 @@ var Login = {
             // }                
         }
         FB.login(function(resp) {
-            console.log(resp)
-            junk().then();
+            junk(resp).then();
         }, {scope: 'public_profile,email'});  
     },
     logout: function() {
