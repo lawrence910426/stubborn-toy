@@ -1,50 +1,46 @@
-$(document).ready(function() {
-    function get_fields() {
+var Login = {
+    get_fields: function() {
         return new Promise(function(result, reject) {
             FB.api('/me', function(response) {
                 console.log(JSON.stringify(response));
                 result(response);
             });
         })
-    }
-    function get_connected() {
+    },
+    get_connected: function() {
         return new Promise(function(result, reject) {
             FB.getLoginStatus(function(response) {
-                console.log(response.authResponse.accessToken);
-                result(response.status === 'connected')
+                result(response.status === 'connected' ? response.authResponse.accessToken : false)
             });  
         })
-    }
-    $("#login_btn").click(function() {
+    },
+    login: function() {
         async function junk() {
-            if(await get_connected()) {
-                console.log(await get_response());
-                // call server for update/register and fetch futher information.
+            var token = await get_connected()
+            if(!token) {
+                var resp = await get_response()
+                $.post(config.host + "login", 
+                   {"facebook_id": resp.id, "access_token": token}
+                ).done(function(data) {
+                    data = JSON.parse(data)
+                    console.log(data)
+                })
             }                
         }
         FB.login(function() {
             junk();
             refresh();
         }, {scope: 'public_profile,email'});  
-    })
-    $("#logout_btn").click(function() {
+    },
+    logout: function() {
         FB.logout(function() {
-            // call server for deleting session.
-            refresh();
+            $.post(config.host + "logout").done(function(data) {
+                data = JSON.parse(data)
+                console.log(data)
+            })
         }, {scope: 'public_profile,email'});
-     })
-    
-    function refresh() {
-        get_connected().then(function(ans) {
-            if(ans) {
-                $("#login_btn").css("display", "none");
-                $("#logout_btn").css("display", "block");
-            } else {
-                $("#login_btn").css("display", "block");
-                $("#logout_btn").css("display", "none");
-            }
-        })   
+     },
+    force_login: async function() {
+        if(await get_connected()) login();
     }
-    refresh();
-})
-
+}

@@ -113,4 +113,9 @@ $(document).ready(function() {
             window.location = "/frontend/" + $(this).attr("news_id");
         })  
     })
+    
+    $(".force_login").click(function() {
+        Login.force_login()
+        
+    })
 })
