@@ -39,8 +39,5 @@ var Login = {
                 console.log(data)
             })
         }, {scope: 'public_profile,email'});
-     },
-    force_login: async function() {
-        if(await Login.get_connected()) login();
-    }
+     }
 }

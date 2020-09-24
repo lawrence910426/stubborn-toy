@@ -114,8 +114,8 @@ $(document).ready(function() {
         })  
     })
     
-    $(".force_login").click(function() {
-        Login.force_login()
-        
+    $(".force_login").click(function(e) {
+        Login.login()
+        e.preventDefault();
     })
 })
