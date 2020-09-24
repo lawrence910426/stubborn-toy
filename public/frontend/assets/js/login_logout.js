@@ -15,14 +15,15 @@ var Login = {
             });  
         })
     },
-    login: async function() {
+    login: function() {
         FB.login(function(resp) {
-            var fields = await Login.get_fields()
-            $.post(config.host + "login", 
-               {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
-            ).done(function(data) {
-                data = JSON.parse(data)
-                console.log(data)
+            Login.get_fields().then((fields) => {
+                $.post(config.host + "login", 
+                   {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
+                ).done(function(data) {
+                    data = JSON.parse(data)
+                    console.log(data)
+                })
             })
         }, {scope: 'public_profile,email'});  
     },
