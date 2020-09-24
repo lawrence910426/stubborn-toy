@@ -10,6 +10,7 @@ var Login = {
     get_connected: function() {
         return new Promise(function(result, reject) {
             FB.getLoginStatus(function(response) {
+                console.log(response)
                 result(response.status === 'connected' ? response.authResponse.accessToken : false)
             });  
         })
@@ -17,7 +18,7 @@ var Login = {
     login: function() {
         async function junk() {
             var token = await Login.get_connected()
-            if(!token) {
+            if(token === false) {
                 var resp = await Login.get_response()
                 $.post(config.host + "login", 
                    {"facebook_id": resp.id, "access_token": token}
@@ -28,8 +29,7 @@ var Login = {
             }                
         }
         FB.login(function() {
-            junk();
-            refresh();
+            junk().then();
         }, {scope: 'public_profile,email'});  
     },
     logout: function() {
