@@ -42,7 +42,7 @@ const config = {
                 ca: "/certs/ca_bundle.crt"
             }
         },
-        news_template: "aaaaaa.html",
+        news_template: "../../public/frontend/news.html",
         public: "../../public"
     }
 }
