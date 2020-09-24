@@ -115,7 +115,7 @@ $(document).ready(function() {
     })
     
     $(".force_login").click(function(e) {
-        Login.login()
-        e.preventDefault();
+        Login.login().then()
+        e.preventDefault()
     })
 })
