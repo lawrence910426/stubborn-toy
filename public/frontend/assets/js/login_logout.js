@@ -16,9 +16,9 @@ var Login = {
     },
     login: function() {
         async function junk() {
-            var token = await get_connected()
+            var token = await Login.get_connected()
             if(!token) {
-                var resp = await get_response()
+                var resp = await Login.get_response()
                 $.post(config.host + "login", 
                    {"facebook_id": resp.id, "access_token": token}
                 ).done(function(data) {
@@ -41,6 +41,6 @@ var Login = {
         }, {scope: 'public_profile,email'});
      },
     force_login: async function() {
-        if(await get_connected()) login();
+        if(await Login.get_connected()) login();
     }
 }
