@@ -15,10 +15,8 @@ var Login = {
             });  
         })
     },
-    login: function() {
-        async function junk(resp) {
-            /* var token = await Login.get_connected()
-            if(token === false) { */
+    login: async function() {
+        FB.login(function(resp) {
             var fields = await Login.get_fields()
             $.post(config.host + "login", 
                {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
@@ -26,10 +24,6 @@ var Login = {
                 data = JSON.parse(data)
                 console.log(data)
             })
-            // }                
-        }
-        FB.login(function(resp) {
-            junk(resp).then();
         }, {scope: 'public_profile,email'});  
     },
     logout: function() {
