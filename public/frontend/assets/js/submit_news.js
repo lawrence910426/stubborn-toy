@@ -116,5 +116,13 @@ $(document).ready(function() {
     
     $(window).bind('beforeunload', function(){
         return 'Leaving the website';
-   });
+    });
+    
+    $("#submit").click(function() {
+        $.post(config.host + "post_news", 
+           {"headline": 1, "paging": { "offset": 0, "limit": 5 }}
+        ).done(function(data) {
+            window.href.location = "../index.html"
+        })
+    })
 });

@@ -1,4 +1,4 @@
 const config = {
     //host: "http://localhost:1337/"
-    host: "https://stubbornnews.com/"
+    host: `https://${window.location.host}`
 }
