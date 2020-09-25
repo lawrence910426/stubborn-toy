@@ -97,30 +97,39 @@ $(document).ready(function() {
     function init_cropper(name, ratio) {
         $(name).cropper('destroy')
         var $image = $(name);
-            $image.cropper({
-              aspectRatio: ratio,
-              crop: function(event) {
-                /* console.log(event.detail.x);
-                console.log(event.detail.y);
-                console.log(event.detail.width);
-                console.log(event.detail.height);
-                console.log(event.detail.rotate);
-                console.log(event.detail.scaleX);
-                console.log(event.detail.scaleY); */
-              }
-            });
-
-        // Get the Cropper.js instance after initialized
-        var cropper = $image.data('cropper');
+        $image.cropper({
+          aspectRatio: ratio,
+          crop: function(event) {
+            /* console.log(event.detail.x);
+            console.log(event.detail.y);
+            console.log(event.detail.width);
+            console.log(event.detail.height);
+            console.log(event.detail.rotate);
+            console.log(event.detail.scaleX);
+            console.log(event.detail.scaleY); */
+          }
+        });
     }
     
     $(window).bind('beforeunload', function(){
         return 'Leaving the website';
     });
     
-    $("#submit").click(function() {
+    $("#submit").click(async function() {
+        var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
+        croppedimage = croppedimage.split(",")[1];
+        var normal_link = await getImgurLink(croppedimage)
+        
         $.post(config.host + "post_news", 
-           {"headline": 1, "paging": { "offset": 0, "limit": 5 }}
+        {
+            title: $("#post_title").val(),
+            content: $("#markdown").val(),
+            normal_image_link: normal_link,
+            category: $('input[name="theme"]:checked').val(),
+            is_advanced: req.body.is_advanced,
+            notify: req.body.notify,
+            email: req.body.email
+        }
         ).done(function(data) {
             window.href.location = "../index.html"
         })
