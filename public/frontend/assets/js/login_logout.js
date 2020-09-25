@@ -16,16 +16,19 @@ var Login = {
         })
     },
     login: function() {
-        FB.login(function(resp) {
-            Login.get_fields().then((fields) => {
-                $.post(config.host + "login", 
-                   {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
-                ).done(function(data) {
-                    data = JSON.parse(data)
-                    console.log(data)
+        return new Promise((res, rej) => {
+            FB.login(function(resp) {
+                Login.get_fields().then((fields) => {
+                    $.post(config.host + "login", 
+                       {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
+                    ).done(function(data) {
+                        data = JSON.parse(data)
+                        console.log(data)
+                        res()
+                    })
                 })
-            })
-        }, {scope: 'public_profile,email'});  
+            }, {scope: 'public_profile,email'});  
+        });
     },
     logout: function() {
         FB.logout(function() {

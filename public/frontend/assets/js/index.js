@@ -117,7 +117,7 @@ $(document).ready(function() {
     $(".force_login").click(function(e) {
         e.preventDefault()
         Login.login().then(function() {
-            window.location.href = $(this).attr('href')
+            window.location.href = $(this).attr('href')  
         })
     })
 })
