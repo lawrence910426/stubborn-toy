@@ -10,7 +10,6 @@ module.exports = ((db) => {
 
         var clause = {}
         for (var key in input) if (input[key] !== undefined) clause[key] = input[key];
-        }
 
         if (req.session.self == undefined) {
             res.send("Access denied")
