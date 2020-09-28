@@ -106,7 +106,7 @@ $(document).ready(function() {
     
     var url = new URL(window.location.href)
     
-    if( url.searchParams.get("is_edit") !== "true") $(".edit_news").css("display", "none")
+    if(url.searchParams.get("is_edit") !== "true") $(".edit_news").css("display", "none")
     
     $("#submit").click(async function() {
         var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");

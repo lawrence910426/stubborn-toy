@@ -15,7 +15,7 @@ module.exports = ((sequelize, db) => {
         else {
             const t = await sequelize.transaction();
             input.author = req.session.self.id
-            await db.post.create(input, { transaction: t })
+            await db.news.create(input, { transaction: t })
             
             try {
                 if (input.is_advanced) {
