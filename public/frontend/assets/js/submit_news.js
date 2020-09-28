@@ -170,6 +170,6 @@ $(document).ready(function() {
         } else {
             $("#Announce_Email_Address").css("display", "block")
         }
-        Announce_Email_Address = !Announce_Email_Address;
+        Announce_Email_Address_State = !Announce_Email_Address_State;
     })
 });
