@@ -25,7 +25,7 @@ module.exports = ((sequelize, db) => {
                         amount: 20
                     }, { transaction: t })  
 
-                    await db.news.increment(
+                    await db.user.increment(
                         'amount',
                         { by: 20, where: { id: req.session.self.id } }
                     );
