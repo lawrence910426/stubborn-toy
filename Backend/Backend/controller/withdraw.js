@@ -11,7 +11,7 @@ module.exports = ((db) => {
         var clause = {}
         for (var key in input) if (input[key] !== undefined) {
             if (key == "withdraw") clause[key] = input[key] == "true"
-            else clause[key] = parseInt(input[key])
+            else clause[key] = input[key]
         }
         console.log(JSON.stringify(clause))
 
