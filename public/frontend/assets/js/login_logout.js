@@ -1,4 +1,5 @@
 var Login = {
+    is_admin: false,
     get_fields: function() {
         return new Promise(function(result, reject) {
             FB.api('/me', function(response) {
@@ -23,7 +24,7 @@ var Login = {
                        {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
                     ).done(function(data) {
                         data = JSON.parse(data)
-                        console.log(data)
+                        Login.is_admin = data.admin
                         res()
                     })
                 })

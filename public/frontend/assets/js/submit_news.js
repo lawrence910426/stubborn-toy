@@ -104,10 +104,16 @@ $(document).ready(function() {
         return 'Leaving the website';
     });
     
+    
+    if(!Login.is_admin) $(".admin_only").css("display", "none")
+    
     $("#submit").click(async function() {
         var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
         croppedimage = croppedimage.split(",")[1];
         var normal_link = await getImgurLink(croppedimage)
+        
+        var url = new URL(window.location.href)
+        var advanced = url.searchParams.get("level") == "advanced"
         
         $.post(config.host + "post_news", 
         {
@@ -115,7 +121,7 @@ $(document).ready(function() {
             content: $("#markdown").val(),
             normal_image_link: normal_link,
             category: $('input[name="theme"]:checked').val(),
-            is_advanced: req.body.is_advanced,
+            is_advanced: advanced,
             notify: req.body.notify,
             email: req.body.email
         }
