@@ -43,7 +43,7 @@ db.sync.then(() => {
 
     app.post('/get_news', require('./controller/get_news.js')(db, Op))
 
-    app.post('/post_news', require('./controller/post_news.js')(db))
+    app.post('/post_news', require('./controller/post_news.js')(sequelize, db))
 
     app.post('/edit_news', require('./controller/edit_news.js')(db))
 
