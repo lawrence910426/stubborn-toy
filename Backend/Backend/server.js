@@ -39,6 +39,8 @@ db.sync.then(() => {
         else res.redirect('https://' + req.headers.host + req.url);
     })
 
+    app.post('/', (req, res) => { })
+
     app.post('/withdraw', require('./controller/withdraw.js')())
 
     app.post('/get_news', require('./controller/get_news.js')(db, Op))
@@ -48,6 +50,8 @@ db.sync.then(() => {
     app.post('/edit_news', require('./controller/edit_news.js')(db))
 
     app.post('/delete_news', require('./controller/delete_news.js')(db))
+
+    app.get('/', (req, res) => { res.location("frontend") })
 
     app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
 
