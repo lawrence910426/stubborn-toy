@@ -8,7 +8,8 @@ module.exports = ((db, Op) => {
         paging: {
             limit: 10,
             offset: 20
-        }
+        },
+        advanced: true
     }
     /* ---------------------------------- */
 
@@ -17,7 +18,8 @@ module.exports = ((db, Op) => {
             is_shown: (req.session.self === undefined || req.session.self.admin ? true : req.body.shown),
             is_headline: req.body.headline,
             is_interview: req.body.interview,
-            is_hot: req.body.hot
+            is_hot: req.body.hot,
+            is_advanced: req.body.advanced
         }
         var clause = []
         for (var key in inputs) if (inputs[key] !== undefined) {
