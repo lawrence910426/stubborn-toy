@@ -1,7 +1,9 @@
 $(document).ready(function() {
-    $("#bank_balance").text(`您的帳戶餘額：${window.localStorage.user.balance}$`) 
+    var self = JSON.parse(window.localStorage.user)
     
-    var checked = window.localStorage.user.withdraw == "1" ? "cond_new" : "cond_used"
+    $("#bank_balance").text(`您的帳戶餘額：${self.balance}$`) 
+    
+    var checked = self.withdraw == "1" ? "cond_new" : "cond_used"
     $(`#${checked}`).prop('checked',true);
     
     $('input[type=radio][name=bike_cond]').change(function() {
@@ -13,8 +15,8 @@ $(document).ready(function() {
         })
     });
     
-    $("#text_bank_id").val(window.localStorage.user.bank_id)
-    $("#text_bank_account").val(window.localStorage.user.bank_account)
+    $("#text_bank_id").val(self.bank_id)
+    $("#text_bank_account").val(self.bank_account)
     
     $("#save_bank_account").click(function() {
         $.post(config.host + "withdraw", 

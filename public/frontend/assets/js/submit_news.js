@@ -160,5 +160,6 @@ $(document).ready(function() {
         }
     });
     
-    $("#user_name").text(`投稿人姓名：${window.localStorage.user.name}`)
+    var self = JSON.parse(window.localStorage.user)
+    $("#user_name").text(`投稿人姓名：${self.name}`)
 });
