@@ -136,7 +136,7 @@ $(document).ready(function() {
                 email: $("#Announce_Email_Address").val()
             }
             ).done(function(data) {
-                window.onbeforeunload = null
+                $(window).unbind('beforeunload');
                 window.location.href = "index.html"
             })
         }
@@ -159,4 +159,6 @@ $(document).ready(function() {
             themed = true
         }
     });
+    
+    $("#user_name").text(`投稿人姓名：${window.localStorage.user.name}`)
 });

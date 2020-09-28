@@ -20,7 +20,7 @@ var Login = {
                     $.post(config.host + "login", 
                        {"facebook_id": fields.id, "access_token": resp.authResponse.accessToken}
                     ).done(function(data) {
-                        console.log(data)
+                        window.localStorage.user = data
                         window.localStorage.admin = data.admin
                         res()
                     })
