@@ -162,4 +162,14 @@ $(document).ready(function() {
     
     var self = JSON.parse(window.localStorage.user)
     $("#user_name").text(`投稿人姓名：${self.name}`)
+    
+    var Announce_Email_Address_State = false;
+    $("input[type=radio][name=Notify]").change(function() {
+        if(Announce_Email_Address_State) {
+            $("#Announce_Email_Address").css("display", "none")
+        } else {
+            $("#Announce_Email_Address").css("display", "block")
+        }
+        Announce_Email_Address = !Announce_Email_Address;
+    })
 });
