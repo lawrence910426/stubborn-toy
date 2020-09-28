@@ -12,8 +12,8 @@ $(document).ready(function() {
     
     for(var a in A) for(var b in B) {
         var criteria = {
-            "advanced": b == "advanced" ? 1 : 0, 
-            "shown": a == "shown" ? 1 : 0, 
+            "advanced": B[b] == "advanced" ? 1 : 0, 
+            "shown": A[a] == "shown" ? 1 : 0, 
             "paging": { 
                 "offset": 0 * 18, 
                 "limit": 18 
@@ -25,9 +25,8 @@ $(document).ready(function() {
         ).done(function(data) {
             data = JSON.parse(data)
             data.forEach((element) => {
-                $(`.${a}.${b}`).append(gen_abstract(element))
+                $(`.${A[a]}.${B[b]}`).append(gen_abstract(element))
             });
-            res()
         })
     }
 })
