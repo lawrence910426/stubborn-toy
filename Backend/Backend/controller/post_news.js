@@ -19,9 +19,9 @@ module.exports = ((sequelize, db) => {
             await db.news.create(input, { transaction: t })
             
             try {
-                if (input.is_advanced) {
-                    post_instance = await db.transfer.create({
-                        user_id: input.author,
+                if (input.is_advanced == "1") {
+                    await db.transfer.create({
+                        user_id: input.user_to_news,
                         reason: "Advanced post",
                         amount: 20
                     }, { transaction: t })  

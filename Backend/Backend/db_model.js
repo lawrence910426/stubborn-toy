@@ -16,7 +16,7 @@ module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: fal
         user_id: { type: Sequelize.INTEGER, allowNull: false },
         reason: { type: Sequelize.STRING, allowNull: false },
         amount: { type: DataTypes.INTEGER, allowNull: false },
-        datetime: { type: 'TIMESTAMP', defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') }
+        datetime: { type: 'TIMESTAMP', def == aultValue: Sequelize.literal('CURRENT_TIMESTAMP') }
     }, { sequelize });
     class news extends Model { }
     news.init({
