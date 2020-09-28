@@ -136,7 +136,8 @@ $(document).ready(function() {
                 email: $("#Announce_Email_Address").val()
             }
             ).done(function(data) {
-                window.location = "index.html"
+                window.onbeforeunload = null
+                window.location.href = "index.html"
             })
         }
     })
