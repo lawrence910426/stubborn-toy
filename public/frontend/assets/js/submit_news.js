@@ -164,6 +164,7 @@ $(document).ready(function() {
     $("#user_name").text(`投稿人姓名：${self.name}`)
     
     var Announce_Email_Address_State = false;
+    $("#Announce_Email_Address").css("display", "none")
     $("input[type=radio][name=Notify]").change(function() {
         if(Announce_Email_Address_State) {
             $("#Announce_Email_Address").css("display", "none")
