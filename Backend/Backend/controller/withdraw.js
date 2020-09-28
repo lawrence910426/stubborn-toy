@@ -2,14 +2,17 @@ module.exports = ((db) => {
     return async (req, res) => {
         /* ---------------------------------- */
         const input = {
-            withdraw: req.body.withdraw == "true",
-            bank_id: parseInt(req.body.bank_id),
-            bank_account: parseInt(req.body.account)
+            withdraw: req.body.withdraw,
+            bank_id: req.body.bank_id,
+            bank_account: req.body.account
         }
         /* ---------------------------------- */
 
         var clause = {}
-        for (var key in input) if (input[key] !== undefined) clause[key] = input[key]
+        for (var key in input) if (input[key] !== undefined) {
+            if (key == "withdraw") clause[key] = input[key] == "true"
+            else clause[key] = parseInt(input[key])
+        }
         console.log(JSON.stringify(clause))
 
         if (req.session.self == undefined) {
