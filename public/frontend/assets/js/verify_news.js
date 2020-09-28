@@ -10,7 +10,7 @@ $(document).ready(function() {
     var A = ["shown", "not_shown"] 
     var B = ["advanced", "normal"] 
     
-    for(a in A) for(b in B) {
+    for(var a in A) for(var b in B) {
         var criteria = {
             "advanced": b == "advanced" ? 1 : 0, 
             "shown": a == "shown" ? 1 : 0, 
@@ -23,6 +23,7 @@ $(document).ready(function() {
             config.host + "get_news", 
             criteria
         ).done(function(data) {
+            data = JSON.parse(data)
             data.forEach((element) => {
                 $(`.${a}.${b}`).append(gen_abstract(element))
             });
