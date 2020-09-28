@@ -15,11 +15,11 @@ module.exports = ((db, Op) => {
 
     return async (req, res) => {
         var inputs = {
-            is_shown: (req.session.self === undefined || !req.session.self.admin ? true : req.body.shown == "true"),
+            is_shown: (req.session.self === undefined || !req.session.self.admin ? true : req.body.shown == "1"),
             is_headline: req.body.headline,
             is_interview: req.body.interview,
             is_hot: req.body.hot,
-            is_advanced: req.body.advanced == "true"
+            is_advanced: req.body.advanced == "1"
         }
         var clause = []
         for (var key in inputs) if (inputs[key] !== undefined) {
