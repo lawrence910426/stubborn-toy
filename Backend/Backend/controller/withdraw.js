@@ -20,7 +20,7 @@ module.exports = ((db) => {
         } else {
             await db.user.update(
                 clause,
-                { where: req.session.self.id }
+                { where: { id: req.session.self.id } }
             )
             res.send("OK")
         }
