@@ -62,5 +62,7 @@ module.exports = ((sequelize, db, https) => {
         self = self.toJSON()
         res.send(self)
         req.session.self = self
+
+        console.assert(req.session.self !== undefined)
     }
 });

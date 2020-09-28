@@ -126,7 +126,7 @@ $(document).ready(function() {
             email: $("#Announce_Email_Address").val()
         }
         ).done(function(data) {
-            window.href.location = "../index.html"
+            window.location.href = "../index.html"
         })
     })
 });
