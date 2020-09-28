@@ -24,7 +24,7 @@ module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: fal
         title: { type: DataTypes.STRING, allowNull: false },
         content: { type: Sequelize.TEXT , allowNull: false },
         normal_image_link: { type: DataTypes.STRING, allowNull: false },
-        headline_image_link: { type: DataTypes.STRING, allowNull: false },
+        headline_image_link: { type: DataTypes.STRING, allowNull: true },
         category: { type: DataTypes.STRING, allowNull: false },
         datetime: { type: 'TIMESTAMP', defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
         is_headline: { type: DataTypes.BOOLEAN },
