@@ -11,6 +11,7 @@ $(document).ready(function() {
         {
             withdraw: this.value == "cond_new"
         }).done(function() {
+            Login.logout()
             window.location.reload()
         })
     });
@@ -24,6 +25,7 @@ $(document).ready(function() {
             bank_id: $("#text_bank_id").val(),
             account: $("#text_bank_account").val()
         }).done(function() {
+            Login.logout()
             window.location.reload()
         })
     })

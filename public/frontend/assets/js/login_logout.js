@@ -32,6 +32,7 @@ var Login = {
         FB.logout(function() {
             $.post(config.host + "logout").done(function(data) {
                 data = JSON.parse(data)
+                window.localStorage.user = undefined
             })
         }, {scope: 'public_profile,email'});
      }
