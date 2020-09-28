@@ -122,8 +122,8 @@ $(document).ready(function() {
             normal_image_link: normal_link,
             category: $('input[name="theme"]:checked').val(),
             is_advanced: advanced,
-            notify: req.body.notify,
-            email: req.body.email
+            notify: $('input[name="theme"]:checked').val() == "Yes",
+            email: $("#Announce_Email_Address").val()
         }
         ).done(function(data) {
             window.href.location = "../index.html"

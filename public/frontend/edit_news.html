@@ -182,9 +182,10 @@
                             <!-- Start: Toggle Switches -->
                             <fieldset class="d-flex d-xl-flex justify-content-center justify-content-xl-center align-items-xl-center">
                                 <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center"><strong>錄取通知</strong></legend>
-                                <div class="d-xl-flex justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Do_Notify" name="Notify"><label for="Do_Notify" data-toggle="modal" data-target="#Message_Announcement">是</label><input type="radio" id="Do_Not_Notify" name="Notify" checked="checked"><label for="Do_Not_Notify">否</label></div>
-                                <textarea
-                                    style="height: 30px;width: 100%;" placeholder="電子郵件: lawrence910426@gmail.com"></textarea><a class="text-center admin_only" href="mailto:lawrence910426@gmail.com">lawrence910426@gmail.com</a></fieldset>
+                                <div class="d-xl-flex justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Do_Notify" name="Notify" value="Yes"><label for="Do_Notify" data-toggle="modal" data-target="#Message_Announcement">是</label><input type="radio" id="Do_Not_Notify" name="Notify" checked="checked">
+                                    <label
+                                        for="Do_Not_Notify">否</label>
+                                </div><textarea id="Announce_Email_Address" style="height: 30px;width: 100%;" placeholder="電子郵件: lawrence910426@gmail.com"></textarea><a class="text-center admin_only" href="mailto:lawrence910426@gmail.com">lawrence910426@gmail.com</a></fieldset>
                             <!-- End: Toggle Switches -->
                         </div>
                     </div>
