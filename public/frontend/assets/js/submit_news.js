@@ -104,15 +104,15 @@ $(document).ready(function() {
         return 'Leaving the website';
     });
     
+    var url = new URL(window.location.href)
     
-    if(window.localStorage.admin === undefined || window.localStorage.admin === false) $(".admin_only").css("display", "none")
+    if( url.searchParams.get("is_edit") !== "true") $(".edit_news").css("display", "none")
     
     $("#submit").click(async function() {
         var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
         croppedimage = croppedimage.split(",")[1];
         var normal_link = await getImgurLink(croppedimage)
         
-        var url = new URL(window.location.href)
         var advanced = url.searchParams.get("level") == "advanced"
         
         $.post(config.host + "post_news", 
