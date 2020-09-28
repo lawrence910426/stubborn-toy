@@ -1,6 +1,12 @@
 $(document).ready(function() {
     var self = JSON.parse(window.localStorage.user)
     
+    function reload() {
+        Login.login().then(function() {
+            window.location.reload()    
+        })
+    }
+    
     $("#bank_balance").text(`您的帳戶餘額：${self.balance}$`) 
     
     var checked = self.withdraw == "1" ? "cond_new" : "cond_used"
@@ -10,10 +16,7 @@ $(document).ready(function() {
         $.post(config.host + "withdraw", 
         {
             withdraw: this.value == "cond_new"
-        }).done(function() {
-            Login.login()
-            window.location.reload()
-        })
+        }).done(reload)
     });
     
     $("#text_bank_id").val(self.bank_id)
@@ -24,10 +27,7 @@ $(document).ready(function() {
         {
             bank_id: $("#text_bank_id").val(),
             account: $("#text_bank_account").val()
-        }).done(function() {
-            Login.login()
-            window.location.reload()
-        })
+        }).done(reload)
     })
 })
 
