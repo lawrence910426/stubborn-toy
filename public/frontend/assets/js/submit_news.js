@@ -97,18 +97,7 @@ $(document).ready(function() {
     function init_cropper(name, ratio) {
         $(name).cropper('destroy')
         var $image = $(name);
-        $image.cropper({
-          aspectRatio: ratio,
-          crop: function(event) {
-            /* console.log(event.detail.x);
-            console.log(event.detail.y);
-            console.log(event.detail.width);
-            console.log(event.detail.height);
-            console.log(event.detail.rotate);
-            console.log(event.detail.scaleX);
-            console.log(event.detail.scaleY); */
-          }
-        });
+        $image.cropper({ aspectRatio: ratio });
     }
     
     $(window).bind('beforeunload', function(){

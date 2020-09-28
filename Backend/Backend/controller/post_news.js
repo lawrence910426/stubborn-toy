@@ -16,7 +16,7 @@ module.exports = ((db) => {
             const t = await sequelize.transaction();
             input.author = req.session.self.id
             await db.post.create(input, { transaction: t })
-            var post_instance;
+            
             try {
                 if (input.is_advanced) {
                     post_instance = await db.transfer.create({
