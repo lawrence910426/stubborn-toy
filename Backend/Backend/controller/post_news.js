@@ -25,8 +25,10 @@ module.exports = ((sequelize, db) => {
                         amount: 20
                     }, { transaction: t })  
 
-                    req.session.self.balance += 20
-                    await req.session.self.save({ transaction: t })
+                    await db.news.increment(
+                        'amount',
+                        { by: 20, where: { id: req.session.self.id } }
+                    );
                 }
                 await t.commit();
             } catch (error) {
