@@ -1,13 +1,24 @@
-module.exports = (() => {
+module.exports = ((db) => {
     return async (req, res) => {
         /* ---------------------------------- */
-        const input = { withdraw: req.body.stat }
+        const input = {
+            withdraw: req.body.withdraw,
+            bank_id: req.body.bank_id,
+            bank_account: req.body.account
+        }
         /* ---------------------------------- */
+
+        var clause = {}
+        for (var key in input) if (input[key] !== undefined) clause[key] = input[key];
+        }
+
         if (req.session.self == undefined) {
             res.send("Access denied")
         } else {
-            req.session.self.withdraw = input.withdraw
-            await req.session.self.save()
+            await db.user.update(
+                clause,
+                { where: req.session.self.id }
+            )
             res.send("OK")
         }
     }

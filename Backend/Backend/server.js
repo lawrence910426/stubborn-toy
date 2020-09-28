@@ -41,7 +41,7 @@ db.sync.then(() => {
 
     app.post('/', (req, res) => { })
 
-    app.post('/withdraw', require('./controller/withdraw.js')())
+    app.post('/withdraw', require('./controller/withdraw.js')(db))
 
     app.post('/get_news', require('./controller/get_news.js')(db, Op))
 
