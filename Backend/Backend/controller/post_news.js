@@ -28,7 +28,11 @@ module.exports = ((sequelize, db) => {
 
                     await db.user.increment(
                         'balance',
-                        { by: 20, where: { id: req.session.self.id }, t }
+                        {
+                            by: 20,
+                            where: { id: req.session.self.id }, 
+                            transaction: t
+                        }
                     );
                 }
                 await t.commit();
