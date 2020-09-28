@@ -51,7 +51,7 @@ db.sync.then(() => {
 
     app.post('/delete_news', require('./controller/delete_news.js')(db))
 
-    app.get('/', (req, res) => { res.location("frontend") })
+    app.get('/', (req, res) => { res.redirect("frontend") })
 
     app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
 
