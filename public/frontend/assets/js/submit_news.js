@@ -105,7 +105,7 @@ $(document).ready(function() {
     });
     
     
-    if(!Login.is_admin) $(".admin_only").css("display", "none")
+    if(window.localStorage.admin === undefined || window.localStorage.admin === false) $(".admin_only").css("display", "none")
     
     $("#submit").click(async function() {
         var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
