@@ -8,14 +8,15 @@ module.exports = ((db) => {
         }
         /* ---------------------------------- */
 
-        var clause = {}
-        for (var key in input) if (input[key] !== undefined) clause[key] = input[key];
+        var clause = []
+        for (var key in input) if (input[key] !== undefined) clause.push(input[key])
+        
 
         if (req.session.self == undefined) {
             res.send("Access denied")
         } else {
             await db.user.update(
-                clause,
+                { clause },
                 { where: req.session.self.id }
             )
             res.send("OK")
