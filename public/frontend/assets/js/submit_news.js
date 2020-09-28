@@ -29,6 +29,7 @@ async function getImgurLink(content) {
 
 
 $(document).ready(function() {
+    var warnings = 3
     const greeting_template = `# 操作指引
 - - -
 
@@ -60,6 +61,8 @@ $(document).ready(function() {
     var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
         url: '/',
         accept: async function(file, done) {
+            $("#Abstract_Warning").css("display", "none");
+            warnings -= 1
             var content = await getBase64(file);
             content = content.split(",")[1];
             var link = await getImgurLink(content);
@@ -109,24 +112,38 @@ $(document).ready(function() {
     if(url.searchParams.get("is_edit") !== "true") $(".edit_news").css("display", "none")
     
     $("#submit").click(async function() {
-        var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
-        croppedimage = croppedimage.split(",")[1];
-        var normal_link = await getImgurLink(croppedimage)
-        
-        var advanced = url.searchParams.get("level") == "advanced"
-        
-        $.post(config.host + "post_news", 
-        {
-            title: $("#post_title").val(),
-            content: simplemde.value(),
-            normal_image_link: normal_link,
-            category: $('input[name="theme"]:checked').val(),
-            is_advanced: advanced,
-            notify: $('input[name="Notify"]:checked').val() == "Yes" ? 1 : 0,
-            email: $("#Announce_Email_Address").val()
+        if(warnings > 0) {
+            $("#Anti_Idiot").modal('show');
+        } else {
+            var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
+            croppedimage = croppedimage.split(",")[1];
+            var normal_link = await getImgurLink(croppedimage)
+
+            var advanced = url.searchParams.get("level") == "advanced"
+
+            $.post(config.host + "post_news", 
+            {
+                title: $("#post_title").val(),
+                content: simplemde.value(),
+                normal_image_link: normal_link,
+                category: $('input[name="theme"]:checked').val(),
+                is_advanced: advanced,
+                notify: $('input[name="Notify"]:checked').val() == "Yes" ? 1 : 0,
+                email: $("#Announce_Email_Address").val()
+            }
+            ).done(function(data) {
+                window.location.href = "index.html"
+            })
         }
-        ).done(function(data) {
-            window.location.href = "index.html"
-        })
     })
+    
+    $("#post_title").on('input', function(e){
+        $("#post_title_warning").css('display', 'none')
+        warnings -= 1
+    });
+    
+    $('input[type=radio][name=theme]').change(function(){
+        $("#theme_alert").css('display', 'none')
+        warnings -= 1
+    });
 });

@@ -112,12 +112,13 @@
                 <div class="col-md-8 col-xl-7" style="margin-bottom: 30px;">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="text-center card-title">新聞標題</h4><textarea id="post_title" style="width: 100%;height: 30px;" placeholder="為新聞下個聳動的標題吧" maxlength="35"></textarea></div>
+                            <h4 class="text-center card-title">新聞標題</h4><label class="text-center" id="post_title_warning" style="width: 100%;color: rgb(255,0,0);">*必填欄位</label><textarea id="post_title" style="width: 100%;height: 30px;" placeholder="為新聞下個聳動的標題吧" maxlength="35"></textarea></div>
                     </div>
                     <div class="card" style="margin-top: 30px;">
                         <div class="card-body">
-                            <h4 class="text-center card-title">標題圖片</h4>
-                            <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="width: 100%;margin-top: 30px;"><img id="Abstract_Preview_Small" style="max-width: 100%;" src="assets/img/0816OK88.png"></div>
+                            <h4 class="text-center card-title">標題圖片</h4><label class="text-center" id="Abstract_Warning" style="width: 100%;color: rgb(255,0,0);">*必填欄位</label>
+                            <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"
+                                style="width: 100%;margin-top: 30px;"><img id="Abstract_Preview_Small" style="max-width: 100%;" src="assets/img/0816OK88.png"></div>
                             <div class="d-xl-flex justify-content-xl-center align-items-xl-center needsclick dz-clickable dropzone" id="Abstract_Upload_Box" style="margin-top: 30px;border: 2px dashed #000000;height: 150px;"
                                 action="/"></div>
                         </div>
@@ -208,7 +209,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col"><label class="text-center" style="width: 100%;">選擇類別</label>
+                <div class="col"><label class="text-center" style="width: 100%;">選擇類別</label><label class="text-center" id="theme_alert" style="width: 100%;color: rgb(255,0,0);">*必填欄位</label>
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
                             <tbody>
@@ -369,6 +370,18 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="Anti_Idiot">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">請完成填寫<br></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p>您還有尚未填寫完成的資料</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">關閉</button></div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="Message_Announcement">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -414,7 +427,6 @@
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&amp;version=v7.0&amp;appId=1201823270181889&amp;autoLogAppEvents=1" crossorigin="anonymous"></script>
     <script src="assets/js/3rd_Party/jquery-cropper.js"></script>
     <script src="assets/js/3rd_Party/jquery.base64.js"></script>
