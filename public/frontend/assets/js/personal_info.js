@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('input[type=radio][name=bike_cond]').change(function() {
         $.post(config.host + "withdraw", 
         {
-            withdraw: this.value == "cond_new" ? 1 : 0
+            withdraw: this.value == "cond_new"
         }).done(function() {
             Login.logout()
             window.location.reload()
