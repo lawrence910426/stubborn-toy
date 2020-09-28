@@ -118,11 +118,11 @@ $(document).ready(function() {
         $.post(config.host + "post_news", 
         {
             title: $("#post_title").val(),
-            content: $("#markdown").val(),
+            content: simplemde.value(),
             normal_image_link: normal_link,
             category: $('input[name="theme"]:checked').val(),
             is_advanced: advanced,
-            notify: $('input[name="Notify"]:checked').val() == "Yes",
+            notify: $('input[name="Notify"]:checked').val() == "Yes" ? 1 : 0,
             email: $("#Announce_Email_Address").val()
         }
         ).done(function(data) {

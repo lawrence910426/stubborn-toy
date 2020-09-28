@@ -58,7 +58,9 @@ module.exports = ((sequelize, db, https) => {
             console.log(error)
             res.send("Database deadlock");
         }
-        res.send(JSON.stringify(self))
+
+        self = self.toJSON()
+        res.send(self)
         req.session.self = self
     }
 });
