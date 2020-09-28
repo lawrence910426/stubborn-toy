@@ -20,6 +20,7 @@ module.exports = ((db, config) => {
             news = news[0]
             news.views += 1
             await news.save()
+            console.log(news)
             pool.exec(require("../view/generate_post.js"), [
                 {
                     title: news.title,

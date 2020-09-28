@@ -36,6 +36,7 @@ module.exports = ((sequelize, db) => {
                 await t.rollback();
                 console.error(error)
                 res.send("Database deadlock");
+                return;
             }
             
             res.send("OK")
