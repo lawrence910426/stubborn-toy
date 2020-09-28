@@ -3,7 +3,7 @@ $(document).ready(function() {
         return `<div class="card" style="margin-bottom: 30px;">
     <div class="card-body">
         <h4 class="card-title">${news.title}</h4>
-        <div class="d-flex d-xl-flex justify-content-center justify-content-xl-center align-items-xl-center" src="${news.normal_image_link}" style="margin-top: 20px;margin-bottom: 20px;"><img /></div><p class="card-text"> ${news.category} ${news.datetime} ${news.is_headline ? " #頭條 " : ""} ${news.is_hot ? " #熱門 " : ""} ${news.is_interview ? " #專訪 " : ""} </br> ${news.content.slice(0, 100)} </p><a class="card-link" href="#">查看${news.is_advanced == "1" ? "即時" : "普通"}投稿</a></div>
+        <div class="d-flex d-xl-flex justify-content-center justify-content-xl-center align-items-xl-center" src="${news.normal_image_link}" style="margin-top: 20px;margin-bottom: 20px;"><img /></div><p class="card-text"> ${news.category} ${news.datetime} ${news.is_headline ? " #頭條 " : ""} ${news.is_hot ? " #熱門 " : ""} ${news.is_interview ? " #專訪 " : ""} </br> </br> ${news.content.slice(0, 100)} </p><a class="card-link" href="#">查看${news.is_advanced == "1" ? "即時" : "普通"}投稿</a></div>
 </div>`;
     }
     
