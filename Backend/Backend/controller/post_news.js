@@ -15,7 +15,7 @@ module.exports = ((sequelize, db) => {
         if (req.session.self === undefined) res.send("Access denied")
         else {
             const t = await sequelize.transaction();
-            input.author = req.session.self.id
+            input.user_to_news = req.session.self.id
             await db.news.create(input, { transaction: t })
             
             try {
