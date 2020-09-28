@@ -11,6 +11,7 @@ module.exports = ((sequelize, db) => {
             email: req.body.email
         }
         /* ---------------------------------- */
+
         if (req.session.self === undefined) res.send("Access denied")
         else {
             const t = await sequelize.transaction();
@@ -26,7 +27,7 @@ module.exports = ((sequelize, db) => {
                     }, { transaction: t })  
 
                     await db.user.increment(
-                        'amount',
+                        'balance',
                         { by: 20, where: { id: req.session.self.id } }
                     );
                 }
