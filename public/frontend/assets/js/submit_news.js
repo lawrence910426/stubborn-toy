@@ -58,11 +58,15 @@ $(document).ready(function() {
     }
     loop()
     
+    var imaged = false;
     var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
         url: '/',
         accept: async function(file, done) {
             $("#Abstract_Warning").css("display", "none");
-            warnings -= 1
+            if(!imaged) {
+                warnings -= 1
+                imaged = true
+            }
             var content = await getBase64(file);
             content = content.split(",")[1];
             var link = await getImgurLink(content);
@@ -132,18 +136,26 @@ $(document).ready(function() {
                 email: $("#Announce_Email_Address").val()
             }
             ).done(function(data) {
-                window.location.href = "index.html"
+                window.location = "index.html"
             })
         }
     })
     
+    var posted = false;
     $("#post_title").on('input', function(e){
         $("#post_title_warning").css('display', 'none')
-        warnings -= 1
+        if(!posted) {
+            warnings -= 1
+            posted = true
+        }
     });
     
+    var themed = false;
     $('input[type=radio][name=theme]').change(function(){
         $("#theme_alert").css('display', 'none')
-        warnings -= 1
+        if(!themed) {
+            warnings -= 1
+            themed = true
+        }
     });
 });
