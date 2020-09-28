@@ -2,9 +2,9 @@ module.exports = ((db) => {
     return async (req, res) => {
         /* ---------------------------------- */
         const input = {
-            withdraw: req.body.withdraw,
-            bank_id: req.body.bank_id,
-            bank_account: req.body.account
+            withdraw: req.body.withdraw == "true",
+            bank_id: parseInt(req.body.bank_id),
+            bank_account: parseInt(req.body.account)
         }
         /* ---------------------------------- */
 
