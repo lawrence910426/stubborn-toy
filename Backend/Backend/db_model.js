@@ -34,7 +34,7 @@ module.exports = ((Sequelize, Model, DataTypes, sequelize, option = { force: fal
         is_advanced: { type: DataTypes.BOOLEAN, defaultValue: false },
         notify: { type: DataTypes.BOOLEAN, allowNull: false },
         email: { type: DataTypes.STRING, defaultValue: "" },
-        views: { type: DataTypes.STRING, allowNull: false, defaultValue: 0 },
+        views: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     }, { sequelize });
 
     user.hasMany(transfer, { foreignKey: "transfer_record" });
