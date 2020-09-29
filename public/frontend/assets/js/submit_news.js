@@ -113,7 +113,7 @@ $(document).ready(function() {
     
     var url = new URL(window.location.href)
     
-    if(url.searchParams.get("is_edit") !== "true") $(".edit_news").css("display", "none")
+    if(url.searchParams.get("edit_id") != undefined) $(".edit_news").css("display", "none")
     
     $("#submit").click(async function() {
         if(warnings > 0) {
