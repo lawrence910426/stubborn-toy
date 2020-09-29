@@ -39,6 +39,7 @@ $(document).ready(function() {
     
     refresh();
     
-    $("#hot #headline #interview").change(refresh)
-    
+    $("#hot").change(refresh)
+    $("#headline").change(refresh)
+    $("#interview").change(refresh)
 })
