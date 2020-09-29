@@ -10,7 +10,13 @@ $(document).ready(function() {
     function refresh() {
         var A = ["shown", "not_shown"] 
         var B = ["advanced", "normal"] 
-
+        
+        A.forEach(function(a) {
+            B.forEach(function(b) {
+                $(`.${a}.${b}`).empty()   
+            })
+        })
+        
         A.forEach(function(a) {
             B.forEach(function(b) {
                 var criteria = {
