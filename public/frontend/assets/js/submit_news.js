@@ -1,5 +1,4 @@
 Dropzone.autoDiscover = false;
-
 function getBase64(file) {
     return new Promise(function(resolve, reject) {
         var reader = new FileReader();
@@ -27,150 +26,261 @@ async function getImgurLink(content) {
     }
 }
 
-
-$(document).ready(function() {
-    var warnings = 3
-    const greeting_template = `# 操作指引
+var url = new URL(window.location.href)
+if(url.searchParams.get("edit_id") == undefined) {
+    $(document).ready(function() {
+        var warnings = 3
+        const greeting_template = `# 操作指引
 - - -
 
 三個減號可以做出分隔線，在上方上傳圖片後，即可得到圖片連結。
 
 在編輯器中，使用兩個換行可以製造一個換行；在編輯器中，一個星號可以做出*斜體*，兩個星號可以做出**粗體**。
 `;
-    var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
-    simplemde.value(greeting_template);
+        var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
+        simplemde.value(greeting_template);
 
-    
-    var converter = new showdown.Converter({
-        strikethrough: true
-    });
-    var prev_text = ""
-    function update() {
-        var text = simplemde.value();
-        if(text == prev_text) return;
-        var html = converter.makeHtml(text);
-        $("#rendered").empty().append(html);
-        prev_text = text
-    }
-    function loop() {
-        update()
-        setTimeout(loop, 1000)
-    }
-    loop()
-    
-    var imaged = false;
-    var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
-        url: '/',
-        accept: async function(file, done) {
-            $("#Abstract_Warning").css("display", "none");
-            if(!imaged) {
-                warnings -= 1
-                imaged = true
+
+        var converter = new showdown.Converter({ strikethrough: true });
+        var prev_text = ""
+        function update() {
+            var text = simplemde.value();
+            if(text == prev_text) return;
+            var html = converter.makeHtml(text);
+            $("#rendered").empty().append(html);
+            prev_text = text
+        }
+        function loop() {
+            update()
+            setTimeout(loop, 1000)
+        }
+        loop()
+
+        var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
+            url: '/',
+            accept: async function(file, done) {
+                $("#Abstract_Warning").css("display", "none");
+                var content = await getBase64(file);
+                content = content.split(",")[1];
+                var link = await getImgurLink(content);
+                $("#Abstract_Preview_Small").attr("src", link);
+                init_cropper('#Abstract_Preview_Small', 3 / 4);
+                done();
             }
-            var content = await getBase64(file);
-            content = content.split(",")[1];
-            var link = await getImgurLink(content);
-            $("#Abstract_Preview_Small").attr("src", link);
-            init_cropper('#Abstract_Preview_Small', 3 / 4);
-            done();
+        });
+        var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
+            url: '/',
+            accept: async function(file, done) {
+                var content = await getBase64(file);
+                content = content.split(",")[1];
+                var link = await getImgurLink(content);
+                $("#Headline_Preview_Small").attr("src", link);
+                init_cropper('#Headline_Preview_Small', 16 / 9);
+                done();
+            }
+        });    
+        var Img_DropZone = new Dropzone('#Upload_Box', {
+            url: '/',
+            accept: async function(file, done) {
+                var content = await getBase64(file);
+                content = content.split(",")[1];
+                var link = await getImgurLink(content);
+                $("#Generated_Image_Link").text(link);
+                $("#Generated_Image_Link").attr("href", link);
+                const pos = simplemde.codemirror.getCursor();
+                simplemde.codemirror.setSelection(pos, pos);
+                simplemde.codemirror.replaceSelection("\n![](" + link + ")\n");
+                done();
+            }
+        });
+
+        function init_cropper(name, ratio) {
+            $(name).cropper('destroy')
+            var $image = $(name);
+            $image.cropper({ aspectRatio: ratio });
         }
-    });
-    var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
-        url: '/',
-        accept: async function(file, done) {
-            var content = await getBase64(file);
-            content = content.split(",")[1];
-            var link = await getImgurLink(content);
-            $("#Headline_Preview_Small").attr("src", link);
-            init_cropper('#Headline_Preview_Small', 16 / 9);
-            done();
-        }
+
+        $(window).bind('beforeunload', function(){
+            return 'Leaving the website';
+        });
+
+        $(".edit_news").css("display", "none")
+
+        $("#submit").click(async function() {
+            if(warnings > 0) {
+                $("#Anti_Idiot").modal('show');
+            } else {
+                var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
+                croppedimage = croppedimage.split(",")[1];
+                var normal_link = await getImgurLink(croppedimage)
+
+                var advanced = url.searchParams.get("level") == "advanced"
+
+                $.post(config.host + "post_news", 
+                {
+                    title: $("#post_title").val(),
+                    content: simplemde.value(),
+                    normal_image_link: normal_link,
+                    category: $('input[name="theme"]:checked').val(),
+                    is_advanced: advanced,
+                    notify: $('input[name="Notify"]:checked').val() == "Yes" ? 1 : 0,
+                    email: $("#Announce_Email_Address").val()
+                }
+                ).done(function(data) {
+                    $(window).unbind('beforeunload');
+                    window.location.href = "index.html"
+                })
+            }
+        })
+
+        var posted = false;
+        $("#post_title").on('input', function(e){
+            $("#post_title_warning").css('display', 'none')
+            if(!posted) {
+                warnings -= 1
+                posted = true
+            }
+        });
+
+        var themed = false;
+        $('input[type=radio][name=theme]').change(function(){
+            $("#theme_alert").css('display', 'none')
+            if(!themed) {
+                warnings -= 1
+                themed = true
+            }
+        });
+
+        var self = JSON.parse(window.localStorage.user)
+        $("#user_name").text(`投稿人姓名：${self.name}`)
+
+        var Announce_Email_Address_State = false;
+        $("#Announce_Email_Address").css("display", "none")
+        $("input[type=radio][name=Notify]").change(function() {
+            if(Announce_Email_Address_State) {
+                $("#Announce_Email_Address").css("display", "none")
+            } else {
+                $("#Announce_Email_Address").css("display", "block")
+            }
+            Announce_Email_Address_State = !Announce_Email_Address_State;
+        })
     });    
-    var Img_DropZone = new Dropzone('#Upload_Box', {
-        url: '/',
-        accept: async function(file, done) {
-            var content = await getBase64(file);
-            content = content.split(",")[1];
-            var link = await getImgurLink(content);
-            $("#Generated_Image_Link").text(link);
-            $("#Generated_Image_Link").attr("href", link);
-            const pos = simplemde.codemirror.getCursor();
-            simplemde.codemirror.setSelection(pos, pos);
-            simplemde.codemirror.replaceSelection("\n![](" + link + ")\n");
-            done();
-        }
-    });
-    
-    function init_cropper(name, ratio) {
-        $(name).cropper('destroy')
-        var $image = $(name);
-        $image.cropper({ aspectRatio: ratio });
-    }
-    
-    $(window).bind('beforeunload', function(){
-        return 'Leaving the website';
-    });
-    
-    var url = new URL(window.location.href)
-    
-    if(url.searchParams.get("edit_id") == undefined) $(".edit_news").css("display", "none")
-    
-    $("#submit").click(async function() {
-        if(warnings > 0) {
-            $("#Anti_Idiot").modal('show');
-        } else {
+} else {    
+    $(document).ready(function() {
+        $("#post_title_warning").css("display", "none")
+        $("#Abstract_Warning").css("display", "none")
+        $("#theme_alert").css("display", "none")   
+        
+        $.post(config.host + "get_news", 
+           {"id": parseInt(url.searchParams.get("edit_id"))}
+        ).done(function(data) {
+            data = JSON.parse(data)[0]
+            
+            $("#post_title").val(data.title)
+            $("#user_name").text(`投稿人姓名：${data.author.name}`)
+            $("#Abstract_Preview_Small").attr("src", data.normal_image_link)
+            if(data.notify) $("#Do_Notify").prop('checked', true);
+            else $("#Do_Not_Notify").prop('checked', true);
+            $("#Display_Email_Address").text(data.email)
+            $("#Announce_Email_Address").css("display", "none")
+            for(var i = 0;i < 7;i++) if($(".form-check-input")[i].value == data.category) $(`#${$(".form-check-input")[i].id}`).prop('checked', true);
+            
+            
+            var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
+            simplemde.value(data.content);
+            
+            var converter = new showdown.Converter({ strikethrough: true });
+            var prev_text = ""
+            function update() {
+                var text = simplemde.value();
+                if(text == prev_text) return;
+                var html = converter.makeHtml(text);
+                $("#rendered").empty().append(html);
+                prev_text = text
+            }
+            function loop() {
+                update()
+                setTimeout(loop, 1000)
+            }
+            loop()
+            
+            
+            var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
+                url: '/',
+                accept: async function(file, done) {
+                    $("#Abstract_Warning").css("display", "none");
+                    if(!imaged) {
+                        warnings -= 1
+                        imaged = true
+                    }
+                    var content = await getBase64(file);
+                    content = content.split(",")[1];
+                    var link = await getImgurLink(content);
+                    $("#Abstract_Preview_Small").attr("src", link);
+                    init_cropper('#Abstract_Preview_Small', 3 / 4);
+                    done();
+                }
+            });
+            var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
+                url: '/',
+                accept: async function(file, done) {
+                    var content = await getBase64(file);
+                    content = content.split(",")[1];
+                    var link = await getImgurLink(content);
+                    $("#Headline_Preview_Small").attr("src", link);
+                    init_cropper('#Headline_Preview_Small', 16 / 9);
+                    done();
+                }
+            });    
+            var Img_DropZone = new Dropzone('#Upload_Box', {
+                url: '/',
+                accept: async function(file, done) {
+                    var content = await getBase64(file);
+                    content = content.split(",")[1];
+                    var link = await getImgurLink(content);
+                    $("#Generated_Image_Link").text(link);
+                    $("#Generated_Image_Link").attr("href", link);
+                    const pos = simplemde.codemirror.getCursor();
+                    simplemde.codemirror.setSelection(pos, pos);
+                    simplemde.codemirror.replaceSelection("\n![](" + link + ")\n");
+                    done();
+                }
+            });
+
+            function init_cropper(name, ratio) {
+                $(name).cropper('destroy')
+                var $image = $(name);
+                $image.cropper({ aspectRatio: ratio });
+            }
+
+            $(window).bind('beforeunload', function(){
+                return 'Leaving the website';
+            });
+        })
+        
+        
+        $("#submit").click(async function() {
             var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
             croppedimage = croppedimage.split(",")[1];
             var normal_link = await getImgurLink(croppedimage)
-
-            var advanced = url.searchParams.get("level") == "advanced"
-
+            
             $.post(config.host + "post_news", 
             {
-                title: $("#post_title").val(),
-                content: simplemde.value(),
-                normal_image_link: normal_link,
-                category: $('input[name="theme"]:checked').val(),
-                is_advanced: advanced,
-                notify: $('input[name="Notify"]:checked').val() == "Yes" ? 1 : 0,
-                email: $("#Announce_Email_Address").val()
+                id: data.id,
+                title: req.body.title,
+                content: req.body.content,
+                normal_image_link: req.body.normal_image_link,
+                headline_image_link: req.body.headline_image_link,
+                category: req.body.category,
+                is_headline: req.body.is_headline,
+                is_hot: req.body.is_hot,
+                is_interview: req.body.is_interview,
+                is_shown: req.body.is_shown
             }
             ).done(function(data) {
                 $(window).unbind('beforeunload');
                 window.location.href = "index.html"
             })
-        }
-    })
-    
-    var posted = false;
-    $("#post_title").on('input', function(e){
-        $("#post_title_warning").css('display', 'none')
-        if(!posted) {
-            warnings -= 1
-            posted = true
-        }
+        })
     });
-    
-    var themed = false;
-    $('input[type=radio][name=theme]').change(function(){
-        $("#theme_alert").css('display', 'none')
-        if(!themed) {
-            warnings -= 1
-            themed = true
-        }
-    });
-    
-    var self = JSON.parse(window.localStorage.user)
-    $("#user_name").text(`投稿人姓名：${self.name}`)
-    
-    var Announce_Email_Address_State = false;
-    $("#Announce_Email_Address").css("display", "none")
-    $("input[type=radio][name=Notify]").change(function() {
-        if(Announce_Email_Address_State) {
-            $("#Announce_Email_Address").css("display", "none")
-        } else {
-            $("#Announce_Email_Address").css("display", "block")
-        }
-        Announce_Email_Address_State = !Announce_Email_Address_State;
-    })
-});
+}

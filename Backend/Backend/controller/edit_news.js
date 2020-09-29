@@ -11,11 +11,10 @@ module.exports = ((db) => {
             is_headline: req.body.is_headline,
             is_hot: req.body.is_hot,
             is_interview: req.body.is_interview,
-            is_shown: req.body.is_shown,
-            is_advanced: req.body.is_advanced
+            is_shown: req.body.is_shown
         }
         /* ---------------------------------- */
-        if (req.session.self === undefined) res.send("Access denied")
+        if (req.session.self === undefined || !req.session.self.admin) res.send("Access denied")
         else {
             const t = await sequelize.transaction();
             input.author = req.session.self.id

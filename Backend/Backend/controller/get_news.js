@@ -9,7 +9,8 @@ module.exports = ((db, Op) => {
             limit: 10,
             offset: 20
         },
-        advanced: true
+        advanced: true,
+        id: 1
     }
     /* ---------------------------------- */
 
@@ -19,7 +20,8 @@ module.exports = ((db, Op) => {
             is_headline: req.body.headline,
             is_interview: req.body.interview,
             is_hot: req.body.hot,
-            is_advanced: req.body.advanced
+            is_advanced: req.body.advanced,
+            id: req.body.id
         }
         var clause = []
         for (var key in inputs) if (inputs[key] !== undefined) {
