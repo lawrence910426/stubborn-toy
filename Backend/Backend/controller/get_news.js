@@ -24,8 +24,7 @@ module.exports = ((db, Op) => {
         var clause = []
         for (var key in inputs) if (inputs[key] !== undefined) {
             var temp = {};
-            if (key == "is_advanced") { temp[key] = inputs[key] == "1"; }
-            else { temp[key] = inputs[key]; }
+            temp[key] = inputs[key];
             clause.push(temp)
         }
 
