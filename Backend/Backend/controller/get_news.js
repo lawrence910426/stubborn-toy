@@ -19,12 +19,13 @@ module.exports = ((db, Op) => {
             is_headline: req.body.headline,
             is_interview: req.body.interview,
             is_hot: req.body.hot,
-            is_advanced: req.body.advanced == "1"
+            is_advanced: req.body.advanced
         }
         var clause = []
         for (var key in inputs) if (inputs[key] !== undefined) {
             var temp = {};
-            temp[key] = inputs[key]
+            if (key == "is_advanced") { temp[key] = inputs[key] == "1"; }
+            else { temp[key] = inputs[key]; }
             clause.push(temp)
         }
 
