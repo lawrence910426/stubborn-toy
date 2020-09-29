@@ -36,5 +36,9 @@ $(document).ready(function() {
             })
         })
     }
+    
+    refresh();
+    
+    $("#hot #headline #interview").change(refresh)
     
 })
