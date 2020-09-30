@@ -65,7 +65,7 @@ $(document).ready(function() {
     Promise.all([
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-               {"headline": 1, "paging": { "offset": 0, "limit": 5 }}
+               {"is_shown": 1, "headline": 1, "paging": { "offset": 0, "limit": 5 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
@@ -77,7 +77,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"interview": 1, "paging": { "offset": 0, "limit": 5 }}
+                   {"is_shown": 1, "interview": 1, "paging": { "offset": 0, "limit": 5 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
@@ -88,7 +88,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"hot": 1, "paging": { "offset": 0, "limit": 5 }}
+                   {"is_shown": 1, "hot": 1, "paging": { "offset": 0, "limit": 5 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
@@ -99,7 +99,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"headline": 0, "interview": 0, "hot": 0, "paging": { "offset": offset * 18, "limit": 18 }}
+                   {"is_shown": 1, "headline": 0, "interview": 0, "hot": 0, "paging": { "offset": offset * 18, "limit": 18 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
