@@ -5,7 +5,7 @@ $(document).ready(function() {
                 style="width: 100%;">
                 <h1 class="text-left" style="font-size: 32px;width: 100%;color: #000855;margin: 0px 12px;"><strong>${news.title}</strong></h1>
             </div>
-            <div class="d-sm-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center"><img class="flex-grow-0 flex-shrink-0" src="${news.headline_image_link}" alt="Slide Image" style="width: 100%;" /></div>
+            <div class="d-sm-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center"><img class="flex-grow-0 flex-shrink-0" src="${news.normal_image_link}" alt="Slide Image" style="width: 100%;" /></div>
         </div>`
     }
     
