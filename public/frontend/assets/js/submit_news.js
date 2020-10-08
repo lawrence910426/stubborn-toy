@@ -269,7 +269,7 @@ if(url.searchParams.get("edit_id") == undefined) {
         
         $("#submit_check_verify").click(async function() {
             var normal_link = (abstract_modified ? await getImgurLink($('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png").split(",")[1]) : orignal_post.normal_image_link)
-            var headline_link = (headline_modified ? await getImgurLink($('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png").split(",")[1]) : orignal_post.headline_image_link)
+            var headline_link = (headline_modified ? await getImgurLink($('#Headline_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png").split(",")[1]) : orignal_post.headline_image_link)
             
             $.post(config.host + "edit_news", 
             {
