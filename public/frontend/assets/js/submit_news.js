@@ -194,13 +194,13 @@ if(url.searchParams.get("edit_id") == undefined) {
             
             if(data.notify) $("#Do_Notify").prop('checked', true);
             else $("#Do_Not_Notify").prop('checked', true);
-            if(data.shown) $("#Is_Shown").prop('checked', true);
+            if(data.is_shown) $("#Is_Shown").prop('checked', true);
             else $("#Is_Not_Shown").prop('checked', true);
-            if(data.headline) $("#Is_Headline").prop('checked', true);
+            if(data.is_headline) $("#Is_Headline").prop('checked', true);
             else $("#Is_Not_Headline").prop('checked', true);
-            if(data.interview) $("#Is_Interview").prop('checked', true);
+            if(data.is_interview) $("#Is_Interview").prop('checked', true);
             else $("#Is_Not_Interview").prop('checked', true);
-            if(data.hot) $("#Is_Hot").prop('checked', true);
+            if(data.is_hot) $("#Is_Hot").prop('checked', true);
             else $("#Is_Not_Hot").prop('checked', true);
             
             $("#Display_Email_Address").text(data.email)
