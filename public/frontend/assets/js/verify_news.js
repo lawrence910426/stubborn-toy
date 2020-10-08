@@ -49,4 +49,7 @@ $(document).ready(function() {
     $("#hot").change(refresh)
     $("#headline").change(refresh)
     $("#interview").change(refresh)
+    $("#activate_hot").change(refresh)
+    $("#activate_headline").change(refresh)
+    $("#activate_interview").change(refresh)
 })

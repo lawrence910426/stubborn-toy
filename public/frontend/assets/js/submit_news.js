@@ -191,8 +191,18 @@ if(url.searchParams.get("edit_id") == undefined) {
             $("#user_name").text(`投稿人姓名：${data.author.name}`)
             $("#Abstract_Preview_Small").attr("src", data.normal_image_link)
             $("#Headline_Preview_Small").attr("src", data.headline_image_link)
+            
             if(data.notify) $("#Do_Notify").prop('checked', true);
             else $("#Do_Not_Notify").prop('checked', true);
+            if(data.shown) $("#Is_Shown").prop('checked', true);
+            else $("#Is_Not_Shown").prop('checked', true);
+            if(data.headline) $("#Is_Headline").prop('checked', true);
+            else $("#Is_Not_Headline").prop('checked', true);
+            if(data.interview) $("#Is_Interview").prop('checked', true);
+            else $("#Is_Not_Interview").prop('checked', true);
+            if(data.hot) $("#Is_Hot").prop('checked', true);
+            else $("#Is_Not_Hot").prop('checked', true);
+            
             $("#Display_Email_Address").text(data.email)
             $("#Announce_Email_Address").css("display", "none")
             for(var i = 0;i < 7;i++) if($(".form-check-input")[i].value == data.category) $(`#${$(".form-check-input")[i].id}`).prop('checked', true);
@@ -285,6 +295,15 @@ if(url.searchParams.get("edit_id") == undefined) {
                 is_shown: $('input[name="Shown"]:checked').val() == "Yes" ? 1 : 0
             }
             ).done(function(data) {
+                $(window).unbind('beforeunload');
+                window.location.href = "index.html"
+            })
+        })
+        
+        $("#Delete_Post").click(function() {
+            $.post(config.host + "delete_news", { 
+                id: orignal_post.id 
+            }).done(function(data) {
                 $(window).unbind('beforeunload');
                 window.location.href = "index.html"
             })
