@@ -1,4 +1,4 @@
-module.exports = ((sequelize, db) => {
+module.exports = ((db) => {
     return async (req, res) => {
         /* ---------------------------------- */
         var input = {
@@ -16,9 +16,7 @@ module.exports = ((sequelize, db) => {
         /* ---------------------------------- */
         if (req.session.self === undefined || !req.session.self.admin) res.send("Access denied")
         else {
-            const t = await sequelize.transaction();
             input.author = req.session.self.id
-            await db.post.create(input, { transaction: t })
             await db.post.update(
                 input,
                 { where: { id: req.body.id } }
