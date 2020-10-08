@@ -99,7 +99,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"shown": 1, "headline": 0, "interview": 0, "hot": 0, "paging": { "offset": offset * 18, "limit": 18 }}
+                   {"shown": 1, "headline": 0, "interview": 0, "hot": 0, "paging": { "offset": offset * 18 - 18, "limit": 18 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
