@@ -42,6 +42,7 @@ $(document).ready(function() {
     
     var url = new URL(window.location.href)
     var page = parseInt(url.searchParams.get("page"))
+    if(isNaN(page)) page = 1
     var begin = Math.max(0, page - 3)
     
     for(var i = 1;i <= 5;i++) {
