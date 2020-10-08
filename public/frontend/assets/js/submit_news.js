@@ -171,8 +171,9 @@ if(url.searchParams.get("edit_id") == undefined) {
         })
     });    
 } else {    
-    $(".post_news").css("display", "none")
     $(document).ready(function() {
+        var orignal_post;
+        $(".post_news").css("display", "none")
         $("#post_title_warning").css("display", "none")
         $("#Abstract_Warning").css("display", "none")
         $("#theme_alert").css("display", "none")   
@@ -180,11 +181,12 @@ if(url.searchParams.get("edit_id") == undefined) {
         $.post(config.host + "get_news", 
            {"id": parseInt(url.searchParams.get("edit_id"))}
         ).done(function(data) {
-            data = JSON.parse(data)[0]
+            orignal_post = data = JSON.parse(data)[0]
             
             $("#post_title").val(data.title)
             $("#user_name").text(`投稿人姓名：${data.author.name}`)
             $("#Abstract_Preview_Small").attr("src", data.normal_image_link)
+            $("#Headline_Preview_Small").attr("src", data.headline_image_link)
             if(data.notify) $("#Do_Notify").prop('checked', true);
             else $("#Do_Not_Notify").prop('checked', true);
             $("#Display_Email_Address").text(data.email)
@@ -210,15 +212,12 @@ if(url.searchParams.get("edit_id") == undefined) {
             }
             loop()
             
-            
+            var abstract_modified = false;
             var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
                 url: '/',
                 accept: async function(file, done) {
+                    abstract_modified = true
                     $("#Abstract_Warning").css("display", "none");
-                    if(!imaged) {
-                        warnings -= 1
-                        imaged = true
-                    }
                     var content = await getBase64(file);
                     content = content.split(",")[1];
                     var link = await getImgurLink(content);
@@ -227,9 +226,12 @@ if(url.searchParams.get("edit_id") == undefined) {
                     done();
                 }
             });
+            
+            var headline_modified = false
             var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
                 url: '/',
                 accept: async function(file, done) {
+                    headline_modified = true
                     var content = await getBase64(file);
                     content = content.split(",")[1];
                     var link = await getImgurLink(content);
@@ -265,23 +267,22 @@ if(url.searchParams.get("edit_id") == undefined) {
         })
         
         
-        $("#submit").click(async function() {
-            var croppedimage = $('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png");
-            croppedimage = croppedimage.split(",")[1];
-            var normal_link = await getImgurLink(croppedimage)
+        $("#submit_check_verify").click(async function() {
+            var normal_link = (abstract_modified ? await getImgurLink($('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png").split(",")[1]) : orignal_post.normal_image_link)
+            var headline_link = (headline_modified ? await getImgurLink($('#Abstract_Preview_Small').data('cropper').getCroppedCanvas().toDataURL("image/png").split(",")[1]) : orignal_post.headline_image_link)
             
-            $.post(config.host + "post_news", 
+            $.post(config.host + "edit_news", 
             {
-                id: data.id,
-                title: req.body.title,
-                content: req.body.content,
-                normal_image_link: req.body.normal_image_link,
-                headline_image_link: req.body.headline_image_link,
-                category: req.body.category,
-                is_headline: req.body.is_headline,
-                is_hot: req.body.is_hot,
-                is_interview: req.body.is_interview,
-                is_shown: req.body.is_shown
+                id: orignal_post.id,
+                title: $("#post_title").val(),
+                content: simplemde.value(),
+                normal_image_link: normal_link,
+                headline_image_link: headline_link,
+                category: $('input[name="theme"]:checked').val(),
+                is_headline: $('input[name="Headline"]:checked').val() == "Yes" ? 1 : 0,
+                is_hot: $('input[name="Hot"]:checked').val() == "Yes" ? 1 : 0,
+                is_interview: $('input[name="Interview"]:checked').val() == "Yes" ? 1 : 0,
+                is_shown: $('input[name="Shown"]:checked').val() == "Yes" ? 1 : 0
             }
             ).done(function(data) {
                 $(window).unbind('beforeunload');
