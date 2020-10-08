@@ -5,7 +5,7 @@ module.exports = ((db) => {
         /* ---------------------------------- */
         if (req.session.self === undefined || !req.session.self.admin) res.send("Access denied")
         else {
-            db.post.destroy({ where: input })
+            db.news.destroy({ where: input })
             res.send("OK")
         }
     }
