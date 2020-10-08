@@ -178,6 +178,9 @@ if(url.searchParams.get("edit_id") == undefined) {
         $("#Abstract_Warning").css("display", "none")
         $("#theme_alert").css("display", "none")   
         
+        var headline_modified = false
+        var abstract_modified = false;
+        
         $.post(config.host + "get_news", 
            {"id": parseInt(url.searchParams.get("edit_id"))}
         ).done(function(data) {
@@ -192,7 +195,6 @@ if(url.searchParams.get("edit_id") == undefined) {
             $("#Display_Email_Address").text(data.email)
             $("#Announce_Email_Address").css("display", "none")
             for(var i = 0;i < 7;i++) if($(".form-check-input")[i].value == data.category) $(`#${$(".form-check-input")[i].id}`).prop('checked', true);
-            
             
             var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
             simplemde.value(data.content);
@@ -212,7 +214,6 @@ if(url.searchParams.get("edit_id") == undefined) {
             }
             loop()
             
-            var abstract_modified = false;
             var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
                 url: '/',
                 accept: async function(file, done) {
@@ -227,7 +228,6 @@ if(url.searchParams.get("edit_id") == undefined) {
                 }
             });
             
-            var headline_modified = false
             var Headline_DropZone = new Dropzone('#Headline_Upload_Box', {
                 url: '/',
                 accept: async function(file, done) {
