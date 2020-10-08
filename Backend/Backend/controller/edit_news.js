@@ -17,7 +17,7 @@ module.exports = ((db) => {
         if (req.session.self === undefined || !req.session.self.admin) res.send("Access denied")
         else {
             input.author = req.session.self.id
-            await db.post.update(
+            await db.news.update(
                 input,
                 { where: { id: req.body.id } }
             )
