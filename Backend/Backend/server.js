@@ -47,7 +47,7 @@ db.sync.then(() => {
 
     app.post('/post_news', require('./controller/post_news.js')(sequelize, db))
 
-    app.post('/edit_news', require('./controller/edit_news.js')(db))
+    app.post('/edit_news', require('./controller/edit_news.js')(sequelize, db))
 
     app.post('/delete_news', require('./controller/delete_news.js')(db))
 

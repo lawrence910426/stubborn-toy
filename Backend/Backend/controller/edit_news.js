@@ -1,4 +1,4 @@
-module.exports = ((db) => {
+module.exports = ((sequelize, db) => {
     return async (req, res) => {
         /* ---------------------------------- */
         var input = {
