@@ -45,18 +45,18 @@ $(document).ready(function() {
     var begin = Math.max(0, page - 3)
     
     for(var i = 1;i <= 5;i++) {
-        const clone = i + page - 1
+        const clone = i + begin
         $(`#${i} a`).text((i + begin).toString()).click(function() {
             change_page(clone)
         })
     }
     
     $(`#pagination_right`).click(function() {
-        change_page(offset + 1)
+        change_page(page + 1)
     })
     
     $(`#pagination_left`).click(function() {
-        change_page(offset - 1)
+        change_page(page - 1)
     })
     
     Promise.all([
