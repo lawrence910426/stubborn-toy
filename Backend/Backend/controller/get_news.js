@@ -16,7 +16,7 @@ module.exports = ((db, Op) => {
 
     return async (req, res) => {
         var inputs = {
-            is_shown: (req.session.self === undefined || !req.session.self.admin ? true : req.body.shown == "1"),
+            is_shown: (req.session.self === undefined || !req.session.self.admin ? true : req.body.shown),
             is_headline: req.body.headline,
             is_interview: req.body.interview,
             is_hot: req.body.hot,
