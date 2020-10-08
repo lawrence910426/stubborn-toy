@@ -41,15 +41,12 @@ $(document).ready(function() {
     }
     
     var url = new URL(window.location.href)
-    var offset = parseInt(url.searchParams.get("page"))
-    if(isNaN(offset)) offset = 0
-    
-    var page = offset - 2
-    if(page < 0) page = 0
+    var page = parseInt(url.searchParams.get("page"))
+    var begin = Math.max(1, page - 2)
     
     for(var i = 1;i <= 5;i++) {
         const clone = i + page - 1
-        $(`#${i} a`).text((i + page).toString()).click(function() {
+        $(`#${i} a`).text((i + begin).toString()).click(function() {
             change_page(clone)
         })
     }
@@ -99,7 +96,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"shown": 1, "headline": 0, "interview": 0, "hot": 0, "paging": { "offset": offset * 18 - 18, "limit": 18 }}
+                   {"shown": 1, "headline": 0, "interview": 0, "hot": 0, "paging": { "offset": page * 18 - 18, "limit": 18 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
