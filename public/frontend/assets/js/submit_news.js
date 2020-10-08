@@ -109,7 +109,7 @@ if(url.searchParams.get("edit_id") == undefined) {
             return 'Leaving the website';
         });
 
-        $(".edit_news").css("display", "none")
+        $(".edit_news").css("display", "none")
 
         $("#submit").click(async function() {
             if(warnings > 0) {
@@ -171,6 +171,7 @@ if(url.searchParams.get("edit_id") == undefined) {
         })
     });    
 } else {    
+    $(".post_news").css("display", "none")
     $(document).ready(function() {
         $("#post_title_warning").css("display", "none")
         $("#Abstract_Warning").css("display", "none")
