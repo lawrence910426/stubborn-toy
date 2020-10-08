@@ -180,6 +180,7 @@ if(url.searchParams.get("edit_id") == undefined) {
         
         var headline_modified = false
         var abstract_modified = false;
+        var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
         
         $.post(config.host + "get_news", 
            {"id": parseInt(url.searchParams.get("edit_id"))}
@@ -196,7 +197,6 @@ if(url.searchParams.get("edit_id") == undefined) {
             $("#Announce_Email_Address").css("display", "none")
             for(var i = 0;i < 7;i++) if($(".form-check-input")[i].value == data.category) $(`#${$(".form-check-input")[i].id}`).prop('checked', true);
             
-            var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
             simplemde.value(data.content);
             
             var converter = new showdown.Converter({ strikethrough: true });
