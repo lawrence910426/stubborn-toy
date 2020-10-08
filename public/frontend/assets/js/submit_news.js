@@ -55,11 +55,16 @@ if(url.searchParams.get("edit_id") == undefined) {
             setTimeout(loop, 1000)
         }
         loop()
-
+        
+        var imaged = false;
         var Abstract_DropZone = new Dropzone('#Abstract_Upload_Box', {
             url: '/',
             accept: async function(file, done) {
                 $("#Abstract_Warning").css("display", "none");
+                if(!imaged) {
+                    imaged = true;
+                    warnings -= 1;
+                }
                 var content = await getBase64(file);
                 content = content.split(",")[1];
                 var link = await getImgurLink(content);
