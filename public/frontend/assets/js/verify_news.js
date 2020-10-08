@@ -22,14 +22,15 @@ $(document).ready(function() {
                 var criteria = {
                     "advanced": b == "advanced" ? 1 : 0, 
                     "shown": a == "shown" ? 1 : 0, 
-                    "headline": $('#headline').is(":checked") ? 1 : 0, 
-                    "interview": $('#interview').is(":checked") ? 1 : 0,
-                    "hot": $('#hot').is(":checked") ? 1 : 0, 
                     "paging": { 
                         "offset": 0 * 18, 
                         "limit": 18 
                     }
                 }
+                if($("#activate_headline").is(":checked")) criteria.headline = $('#headline').is(":checked") ? 1 : 0;
+                if($("#activate_interview").is(":checked")) criteria.interview = $('#interview').is(":checked") ? 1 : 0;
+                if($("#activate_hot").is(":checked")) criteria.hot = $('#hot').is(":checked") ? 1 : 0
+                
                 $.post(
                     config.host + "get_news", 
                     criteria
