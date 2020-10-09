@@ -50,6 +50,8 @@ $(document).ready(function() {
         $(`#${i} a`).text((i + begin).toString()).click(function() {
             change_page(clone)
         })
+        
+        if(page == i + begin) $(`#${i} a`).addClass("font-weight-bold").addClass("font-italic")
     }
     
     $(`#pagination_right`).click(function() { change_page(page + 1) })
