@@ -27,7 +27,7 @@ $(document).ready(function() {
                 change_page(temp)
             })
             
-            if(page[type] == i + begin) $(`#${type}_${i} a`).addClass("font-weight-bold").addClass("font-italic")
+            if(page[type] == i + begin) $(`#${type}_${i} a`).addClass("font-weight-bold").addClass("font-italic").css("color", "red")
         }
 
         $(`#${type}_pagination_right`).click(function() { 

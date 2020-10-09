@@ -51,7 +51,7 @@ $(document).ready(function() {
             change_page(clone)
         })
         
-        if(page == i + begin) $(`#${i} a`).addClass("font-weight-bold").addClass("font-italic")
+        if(page == i + begin) $(`#${i} a`).addClass("font-weight-bold").addClass("font-italic").css("color", "red")
     }
     
     $(`#pagination_right`).click(function() { change_page(page + 1) })
