@@ -19,7 +19,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
-app.use(express.static(path.join(__dirname, '../../public')));
 
 if (config.connection.hasOwnProperty("https")) {
     https.createServer({
@@ -61,4 +60,6 @@ db.sync.then(() => {
         if (req.session.self === undefined) res.send("Access denied")
         req.session.self = undefined
     })
+
+    app.use(express.static(path.join(__dirname, '../../public')));
 })
