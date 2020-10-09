@@ -1,14 +1,16 @@
+const htmlspecialchars = require('htmlspecialchars');
+
 module.exports = ((sequelize, db) => {
     return async (req, res) => {
         /* ---------------------------------- */
         var input = {
-            title: req.body.title,
+            title: htmlspecialchars(req.body.title),
             content: req.body.content,
             normal_image_link: req.body.normal_image_link,
-            category: req.body.category,
+            category: htmlspecialchars(req.body.category),
             is_advanced: req.body.is_advanced,
             notify: req.body.notify,
-            email: req.body.email
+            email: htmlspecialchars(req.body.email)
         }
         /* ---------------------------------- */
 

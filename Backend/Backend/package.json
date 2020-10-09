@@ -11,6 +11,7 @@
     "cluster": "^0.7.7",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "htmlspecialchars": "^1.0.5",
     "https": "^1.0.0",
     "jssoup": "0.0.12",
     "mocha": "^8.1.3",
