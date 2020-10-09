@@ -52,8 +52,6 @@ db.sync.then(() => {
 
     app.get('/', (req, res) => { res.redirect("frontend") })
 
-    app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
-
     app.post('/login', require('./controller/login.js')(sequelize, db, https))
 
     app.post('/logout', (req, res) => {
@@ -62,4 +60,6 @@ db.sync.then(() => {
     })
 
     app.use(express.static(path.join(__dirname, '../../public')));
+
+    app.get(`/frontend/:id`, require('./controller/show_news.js')(db, config))
 })
