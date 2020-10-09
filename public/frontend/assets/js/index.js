@@ -121,4 +121,6 @@ $(document).ready(function() {
         var key = $(this).text()
         window.location.href = `/frontend/search_result.html?q=${key}`
     })
+    
+    if(window.localStorage.user == undefined || !window.localStorage.admin) { $("#Verify_News_Button").css("display", "none") }
 })
