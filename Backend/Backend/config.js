@@ -31,6 +31,10 @@ const config = {
                 idle: 10000
             }
         }, connection: {
+            http: {
+                port: 80,
+                auto_redirect: false,
+            },
             https: {
                 port: 443,
                 key: "/certs/private.key",
