@@ -72,7 +72,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"shown": 1, "interview": 1, "paging": { "offset": 0, "limit": 5 }}
+                   {"shown": 1, "hot": 1, "paging": { "offset": 0, "limit": 5 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
@@ -83,7 +83,7 @@ $(document).ready(function() {
         }),
         new Promise((res, rej) => {
             $.post(config.host + "get_news", 
-                   {"shown": 1, "hot": 1, "paging": { "offset": 0, "limit": 5 }}
+                   {"shown": 1, "interview": 1, "paging": { "offset": 0, "limit": 5 }}
             ).done(function(data) {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
