@@ -7,6 +7,42 @@ $(document).ready(function() {
 </div>`;
     }
     
+    var url = new URL(window.location.href)
+    var page = {
+        shown: parseInt(url.searchParams.get("shown_page")),
+        unshown: parseInt(url.searchParams.get("unshown_page"))
+    }
+    function pagination_hooks(type) {
+        function change_page(temp) {
+            window.location.href = url.pathname + `?shown_page=` + temp.shown + "&unshown_page=" + temp.unshown
+        }
+        if(isNaN(page[type])) page[type] = 1
+        var begin = Math.max(0, page[type] - 3)
+
+        for(var i = 1;i <= 5;i++) {
+            const clone = i + begin
+            $(`#${type}_${i} a`).text((i + begin).toString()).click(function() {
+                var temp = JSON.parse(JSON.stringify(page))
+                temp[type] = clone
+                change_page(temp)
+            })
+        }
+
+        $(`#${type}_pagination_right`).click(function() { 
+            var temp = JSON.parse(JSON.stringify(page))
+            temp[type] += 1
+            change_page(temp)
+        })
+        $(`#${type}_pagination_left`).click(function() { 
+            var temp = JSON.parse(JSON.stringify(page))
+            temp[type] -= 1
+            change_page(temp)
+        })
+    }
+    pagination_hooks("shown")
+    pagination_hooks("unshown")
+    
+    
     function refresh() {
         var A = ["shown", "not_shown"] 
         var B = ["advanced", "normal"] 
@@ -23,8 +59,8 @@ $(document).ready(function() {
                     "advanced": b == "advanced" ? 1 : 0, 
                     "shown": a == "shown" ? 1 : 0, 
                     "paging": { 
-                        "offset": 0 * 18, 
-                        "limit": 18 
+                        "offset": (a == "shown" ? page.shown : page.unshown) * 20 - 20, 
+                        "limit": 20 
                     }
                 }
                 if($("#activate_headline").is(":checked")) criteria.headline = $('#headline').is(":checked") ? 1 : 0;

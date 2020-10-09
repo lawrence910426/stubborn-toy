@@ -52,13 +52,8 @@ $(document).ready(function() {
         })
     }
     
-    $(`#pagination_right`).click(function() {
-        change_page(page + 1)
-    })
-    
-    $(`#pagination_left`).click(function() {
-        change_page(page - 1)
-    })
+    $(`#pagination_right`).click(function() { change_page(page + 1) })
+    $(`#pagination_left`).click(function() { change_page(page - 1) })
     
     Promise.all([
         new Promise((res, rej) => {
