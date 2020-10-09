@@ -26,6 +26,8 @@ $(document).ready(function() {
                 temp[type] = clone
                 change_page(temp)
             })
+            
+            if(page[type] == i + begin) $(`#${type}_${i} a`).addClass("font-weight-bold").addClass("font-italic")
         }
 
         $(`#${type}_pagination_right`).click(function() { 
