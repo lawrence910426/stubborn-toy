@@ -33,7 +33,7 @@ const config = {
         }, connection: {
             http: {
                 port: 80,
-                auto_redirect: false,
+                auto_redirect: true,
             },
             https: {
                 port: 443,
