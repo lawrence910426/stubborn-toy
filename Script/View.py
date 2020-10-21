@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
 
 today = date.today()
 
-with open("VIEW_" + str(today) + ".csv", 'w', newline='') as csvfile:
+with open("OUTPUT/VIEW_" + str(today) + ".csv", 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['行號', '帳號', '姓名', '金額'])
     
