@@ -13,7 +13,7 @@ mydb = mysql.connector.connect(
 )
 
 today = date.today()
-mydb.autocommit = false
+mydb.autocommit = False
 
 with open("OUTPUT/EXPORT_" + str(today) + ".csv", 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
