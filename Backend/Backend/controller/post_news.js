@@ -5,7 +5,7 @@ module.exports = ((sequelize, db) => {
         /* ---------------------------------- */
         var input = {
             title: htmlspecialchars(req.body.title),
-            content: htmlspecialchars(req.body.content),
+            content: req.body.content,
             normal_image_link: req.body.normal_image_link,
             category: htmlspecialchars(req.body.category),
             is_advanced: req.body.is_advanced,
