@@ -11,12 +11,12 @@ $(document).ready(function() {
     
     function gen_news(news) {
         return `<div class="view_news col-6 col-md-4" news_id="${news.id}">
-    <div class="view_news" style="width: 100%;height: 100%;" news_id="1"><img src="${news.normal_image_link}" style="width: 100%;" /><label class="text-truncate text-left" style="width: 100%;height: 66px;">${news.title}</label></div>
+    <div class="view_news" style="width: 100%;height: 100%;" news_id="1"><img src="${news.normal_image_link}" style="width: 100%;" /><label class="text-left" style="width: 100%; overflow: hidden;">${news.title}</label></div>
 </div>`;
     }
     
     function gen_interview(news) {
-        return `<div class="view_news" news_id="${news.id}" style="width: 100%;"><label class="text-truncate text-left d-xl-flex justify-content-xl-start" style="width: 100%;">${news.title}</label>
+        return `<div class="view_news" news_id="${news.id}" style="width: 100%;"><label class="text-left d-xl-flex justify-content-xl-start" style="width: 100%;">${news.title}</label>
     <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="margin-bottom: 12px;"><img src="${news.normal_image_link}" /></div>
 </div>`
     }
@@ -29,7 +29,7 @@ $(document).ready(function() {
         <div class="col" style="padding-left: 0px;">
             <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-start" style="  width: 100%;
   height: 100%;
-"><label class="text-truncate text-left" style="width: 100%;
+"><label class="text-left" style="width: 100%;
 ">${news.title}</label></div>
         </div>
     </div>
