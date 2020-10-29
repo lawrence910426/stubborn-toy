@@ -11,7 +11,7 @@ $(document).ready(function() {
     
     function gen_news(news) {
         return `<div class="view_news col-6 col-md-4" news_id="${news.id}">
-    <div class="view_news" style="width: 100%;height: 100%;" news_id="1"><img src="${news.normal_image_link}" style="width: 100%;" /><label class="text-left" style="width: 100%; overflow: hidden;">${news.title}</label></div>
+    <div style="width: 100%;height: 100%;"><img src="${news.normal_image_link}" style="width: 100%;" /><label class="text-left" style="width: 100%; overflow: hidden;">${news.title}</label></div>
 </div>`;
     }
     
