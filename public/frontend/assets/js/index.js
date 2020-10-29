@@ -105,7 +105,7 @@ $(document).ready(function() {
         })
     ]).then(function() {
         $(".view_news").click(function() {
-            window.location = "/frontend/" + $(this).attr("news_id");
+            window.open("/frontend/" + $(this).attr("news_id");, "_blank");
         })  
     })
     
