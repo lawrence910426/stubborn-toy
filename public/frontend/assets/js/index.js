@@ -16,24 +16,24 @@ $(document).ready(function() {
     }
     
     function gen_interview(news) {
-        return `<div class="view_news" news_id="${news.id}" style="width: 100%;"><label class="text-left d-xl-flex justify-content-xl-start" style="width: 100%;">${news.title}</label>
-    <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="margin-bottom: 12px;"><img src="${news.normal_image_link}" /></div>
+        return `<div class="view_news" news_id="${news.id}" style="width: 100%;"><a href="${news.id}"><label class="text-left d-xl-flex justify-content-xl-start" style="color:black; width: 100%;">${news.title}</label>
+    <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="margin-bottom: 12px;"><img src="${news.normal_image_link}" /></div></a>
 </div>`
     }
     
     function gen_hot(news) {
-        return `<div>
+        return `<div><a href=${news.id}>
     <hr />
     <div class="row">
         <div news_id="${news.id}" class="view_news col-4 col-xl-3"><img style="width: 100%;" src="${news.normal_image_link}" /></div>
         <div class="col" style="padding-left: 0px;">
             <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-start" style="  width: 100%;
   height: 100%;
-"><label class="text-left" style="width: 100%;
+"><label class="text-left" style="color: black;width: 100%;
 ">${news.title}</label></div>
         </div>
     </div>
-</div>`
+</a></div>`
     }
     
     function change_page(page) {
