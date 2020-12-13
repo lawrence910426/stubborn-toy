@@ -110,14 +110,6 @@ $(document).ready(function() {
         })  
     })
     
-    $(".force_login").click(function(e) {
-        e.preventDefault()
-        var href = $(this).attr('href')  
-        Login.login().then(function() {
-            window.location.href = href
-        })
-    })
-    
     $(".search_key").click(function() {
         var key = $(this).text()
         window.location.href = `/frontend/search_result.html?q=${key}`
