@@ -115,5 +115,5 @@ $(document).ready(function() {
         window.location.href = `/frontend/search_result.html?q=${key}`
     })
     
-    if(window.localStorage.user == undefined || window.localStorage.admin == "false") { $("#Verify_News_Button").css("display", "none") }
+
 })

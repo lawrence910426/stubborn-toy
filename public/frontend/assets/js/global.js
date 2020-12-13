@@ -8,7 +8,12 @@ $(document).ready(function() {
     })
     $("#logout_btn").click(function() {
         FB.logout(function(response) {
-            $.post(config.host + "logout")
+            $.post(config.host + "logout", function() {
+                window.localStorage = undefined
+                window.location = "/frontend/"
+            })
         });
     })
+    
+    if(window.localStorage.user == undefined || window.localStorage.admin == "false") { $("#Verify_News_Button").css("display", "none") }
 })
