@@ -32,7 +32,6 @@ var Login = {
         return new Promise((res, rej) => {
             FB.logout(function() {
                 $.post(config.host + "logout").done(function(data) {
-                    data = JSON.parse(data)
                     window.localStorage.user = undefined
                     window.localStorage.admin = undefined
                     res()
