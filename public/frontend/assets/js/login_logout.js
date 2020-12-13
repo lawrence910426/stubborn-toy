@@ -33,7 +33,7 @@ var Login = {
             FB.logout(function() {
                 $.post(config.host + "logout").done(function(data) {
                     window.localStorage.user = undefined
-                    window.localStorage.admin = undefined
+                    window.localStorage.admin = "false"
                     res()
                 })
             }, {scope: 'public_profile,email'});
