@@ -56,8 +56,10 @@ db.sync.then(() => {
 
     app.post('/logout', (req, res) => {
         if (req.session.self === undefined) res.send("Access denied")
-        req.session.self = undefined
-	res.send("Done")
+	else {
+		req.session.self = undefined
+		res.send("Done")
+	}
     })
 
     app.use(express.static(path.join(__dirname, '../../public')));

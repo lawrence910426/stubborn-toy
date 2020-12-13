@@ -9,7 +9,7 @@ $(document).ready(function() {
     $("#logout_btn").click(function() {
         FB.logout(function(response) {
             $.post(config.host + "logout", function() {
-                window.localStorage = undefined
+                window.localStorage.user = undefined
                 window.location = "/frontend/"
             })
         });
