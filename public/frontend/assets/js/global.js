@@ -7,13 +7,13 @@ $(document).ready(function() {
         })
     })
     $("#logout_btn").click(function() {
-        FB.logout(function(response) {
-            $.post(config.host + "logout", function() {
-                window.localStorage.user = undefined
-                window.location = "/frontend/"
-            })
-        });
+        Login.logout().then(function() {
+            window.location.href = "/frontend"
+        })
     })
     
-    if(window.localStorage.user == undefined || window.localStorage.admin == "false") { $("#Verify_News_Button").css("display", "none") }
+    if(window.localStorage.user == undefined || window.localStorage.admin == "false") {
+        $("#Verify_News_Button").css("display", "none") 
+        $("#logout_btn").css("display", "none")
+    }
 })

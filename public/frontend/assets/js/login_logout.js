@@ -33,6 +33,7 @@ var Login = {
             $.post(config.host + "logout").done(function(data) {
                 data = JSON.parse(data)
                 window.localStorage.user = undefined
+                window.localStorage.admin = undefined
             })
         }, {scope: 'public_profile,email'});
      }

@@ -114,6 +114,4 @@ $(document).ready(function() {
         var key = $(this).text()
         window.location.href = `/frontend/search_result.html?q=${key}`
     })
-    
-
 })
