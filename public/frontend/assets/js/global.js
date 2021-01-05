@@ -16,7 +16,7 @@ $(document).ready(function() {
         $("#logout_btn").css("display", "none")
     }
     
-    if(window.localStorage.user == undefined || window.localStorge.admin == "false") {
+    if(window.localStorage.user == undefined || window.localStorage.admin == "false") {
         $("#Verify_News_Button").css("display", "none") 
     }
 })
