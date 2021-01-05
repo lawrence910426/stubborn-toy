@@ -13,7 +13,10 @@ $(document).ready(function() {
     })
     
     if(window.localStorage.user == undefined) {
-        $("#Verify_News_Button").css("display", "none") 
         $("#logout_btn").css("display", "none")
+    }
+    
+    if(window.localStorage.user == undefined || window.localStorge.admin == "false") {
+        $("#Verify_News_Button").css("display", "none") 
     }
 })
