@@ -12,7 +12,7 @@ $(document).ready(function() {
         })
     })
     
-    if(window.localStorage.user == undefined || window.localStorage.admin == "false") {
+    if(window.localStorage.user == undefined) {
         $("#Verify_News_Button").css("display", "none") 
         $("#logout_btn").css("display", "none")
     }
