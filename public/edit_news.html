@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Frontend</title>
+    <link rel="icon" type="image/png" sizes="538x538" href="assets/img/縮圖OKK.png">
+    <link rel="icon" type="image/png" sizes="538x538" href="assets/img/縮圖OKK.png">
+    <link rel="icon" type="image/png" sizes="538x538" href="assets/img/縮圖OKK.png">
+    <link rel="icon" type="image/png" sizes="538x538" href="assets/img/縮圖OKK.png">
+    <link rel="icon" type="image/png" sizes="538x538" href="assets/img/縮圖OKK.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Article-Clean.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Article-Dual-Column.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Article-List.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/basic.min.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Bold-BS4-Animated-Back-To-Top.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/cropper.min.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/dropzone.min.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Features-Boxed.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Footer-Basic.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/iframe.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/styles.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Toggle-Switch.css">
+    <link rel="stylesheet" href="assets/css/3rd_Party/Toggle-Switches.css">
+    <link rel="stylesheet" href="assets/css/dropdown.css">
+    <link rel="stylesheet" href="assets/css/font.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/markdown.css">
+    <link rel="stylesheet" href="assets/css/Scroll-to-top.css">
+    <link rel="stylesheet" href="assets/css/slideshow_w3css-mloureiro1973-1.css">
+    <link rel="stylesheet" href="assets/css/slideshow_w3css-mloureiro1973.css">
+    <link rel="stylesheet" href="assets/css/SlideshowCarousel-fade-with-animated-captions-and-touch-swipe.css">
+</head>
+
+<body><!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v8.0'
+      });
+    };
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat" attribution=setup_tool page_id="107594257704279" logged_in_greeting="歡迎來到一直頑！有什麼可以協助您嗎？" logged_out_greeting="歡迎來到一直頑！有什麼可以協助您嗎？"> </div>
+    <div id="nav">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+            <div class="container"><a class="navbar-brand border rounded-0 border-white" href="index.html"><img class="border rounded-0 border-white" style="border: 0 none;box-shadow: none;margin: 0px;width: 100px;" src="assets/img/0816OK88.png" width="100px" height="100px"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <div class="row" style="width: 100%;margin: 0px;">
+                        <div class="col-md-12 col-lg-8 col-xl-6" style="padding: 0px;">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item hover_darken"><a class="nav-link d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center force_login" href="submit_clarification.html" style="color: rgb(0,0,0);height: 80px;font-size: 20px;">投稿文章</a></li>
+                                <li class="nav-item hover_darken"><a class="nav-link d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center force_login" href="personal_info.html" style="color: rgb(0,0,0);height: 80px;font-size: 20px;">查看帳戶</a></li>
+                                <li class="nav-item hover_darken" id="Verify_News_Button"><a class="nav-link d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center force_login" href="verify_news.html" style="color: rgb(0,0,0);height: 80px;font-size: 20px;">審核文章</a></li>
+                                <li class="nav-item hover_darken"><a class="nav-link d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" href="https://docs.google.com/forms/d/e/1FAIpQLScSGyOaDoGNYv_ngf0CcLSWDBp9j2Jdq8T_ckSEdNzka5Z0DA/viewform?vc=0&amp;c=0&amp;w=1&amp;flr=0" style="color: rgb(0,0,0);height: 80px;font-size: 20px;">網站建議</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 col-lg-4 col-xl-3 offset-md-0 offset-lg-0 offset-xl-0 d-md-flex justify-content-md-center align-items-md-center" style="padding: 0px;">
+                            <div class="d-md-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-xl-center align-items-xl-center" style="width: 100%;height: 100%;"><div><script async src="https://cse.google.com/cse.js?cx=005960101116534948127:dajrbvh-n6y"></script>
+<div class="gcse-searchbox-only" style="margin: 0px" data-resultsUrl="search_result.html"></div></div>
+</div>
+                        </div>
+                        <div class="col-md-5 col-lg-4 col-xl-3 offset-md-2 offset-lg-8 offset-xl-0" style="padding: 0px;">
+                            <ul class="nav navbar-nav d-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center mr-auto justify-content-md-end justify-content-lg-end justify-content-xl-end" style="height: 100%;">
+                                <li class="nav-item d-flex justify-content-center align-items-center" style="width: 40px;height: 80px;"><a class="nav-link d-flex justify-content-center align-items-center" href="https://www.facebook.com/%E4%B8%80%E7%9B%B4%E9%A0%91-107594257704279" style="padding: 0px;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 0px;width: 100%;height: 100%;min-width: 40px;max-width: 40px;min-height: 40px;max-height: 40px;background-color: rgba(255,255,255,0);"><img class="rounded-circle bg-white" src="assets/img/41b0edd10bd1fcca1833c2e651fcfdaa.png"></a></li>
+                                <li class="nav-item d-flex justify-content-center align-items-center" style="width: 40px;"></li>
+                                <li class="nav-item d-flex justify-content-center align-items-center" style="width: 40px;height: 80px;"><a class="nav-link d-flex justify-content-center align-items-center" href="https://www.instagram.com/stubbornnews0920/" style="padding: 0px;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 0px;width: 100%;height: 100%;min-width: 40px;max-width: 40px;min-height: 40px;max-height: 40px;"><img src="assets/img/1025px-Instagram-Icon.png"></a></li>
+                                <li class="nav-item d-flex justify-content-center align-items-center" style="width: 40px;"></li>
+                                <li class="nav-item d-flex justify-content-center align-items-center" style="width: 40px;height: 80px;"><a class="nav-link d-flex justify-content-center align-items-center" href="mailto:stubbornnews0920@gmail.com" style="padding: 0px;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 0px;"><img src="assets/img/1024px-Gmail_Icon.svg.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-xl-7" style="margin-bottom: 30px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center card-title">新聞標題</h4><label class="text-center" id="post_title_warning" style="width: 100%;color: rgb(255,0,0);">*必填欄位</label><textarea id="post_title" style="width: 100%;height: 30px;" placeholder="為新聞下個聳動的標題吧"></textarea>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <h4 class="text-center card-title">標題圖片</h4><label class="text-center" id="Abstract_Warning" style="width: 100%;color: rgb(255,0,0);">*必填欄位</label>
+                            <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="width: 100%;margin-top: 30px;"><img id="Abstract_Preview_Small" style="max-width: 100%;" src="assets/img/0816OK88.png"></div>
+                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center needsclick dz-clickable dropzone" id="Abstract_Upload_Box" style="margin-top: 30px;border: 2px dashed #000000;height: 150px;" action="/"></div>
+                        </div>
+                    </div>
+                    <div class="card edit_news" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <h4 class="text-center card-title">頭條圖片</h4>
+                            <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="width: 100%;margin-top: 30px;"><img id="Headline_Preview_Small" style="max-width: 100%;" src="assets/img/0816OK88.png"></div>
+                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center needsclick dz-clickable dropzone" id="Headline_Upload_Box" style="margin-top: 30px;border: 2px dashed #000000;height: 150px;" action="/"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center card-title" id="user_name" style="margin: 0px;">投稿人姓名：吳邦寧</h4>
+                        </div>
+                    </div>
+                    <div class="card edit_news" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <fieldset class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center">刪除</legend>
+                                <div class="d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"><button class="btn btn-primary bg-danger border rounded border-danger" type="button" data-target="#Delete_Confirm" data-toggle="modal">刪除文章</button></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="card edit_news" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <fieldset class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center">是否顯示</legend>
+                                <div class="d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Is_Shown" name="Shown" value="Yes"><label for="Is_Shown">是</label><input type="radio" id="Is_Not_Shown" name="Shown" checked="checked" value="No"><label for="Is_Not_Shown">否</label></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="card edit_news" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <fieldset class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center">是否頭條</legend>
+                                <div class="d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Is_Headline" name="Headline" value="Yes"><label for="Is_Headline">是</label><input type="radio" id="Is_Not_Headline" name="Headline" checked="checked" value="No"><label for="Is_Not_Headline">否</label></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="card edit_news" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <fieldset class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center">是否專訪</legend>
+                                <div class="d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Is_Interview" name="Interview" value="Yes"><label for="Is_Interview">是</label><input type="radio" id="Is_Not_Interview" name="Interview" checked="checked" value="No"><label for="Is_Not_Interview">否</label></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="card edit_news" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <fieldset class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center">是否熱門</legend>
+                                <div class="d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Is_Hot" name="Hot" value="Yes"><label for="Is_Hot">是</label><input type="radio" id="Is_Not_Hot" name="Hot" checked="checked" value="No"><label for="Is_Not_Hot">否</label></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 30px;">
+                        <div class="card-body">
+                            <fieldset class="d-flex d-xl-flex justify-content-center justify-content-xl-center align-items-xl-center">
+                                <legend class="text-center d-xl-flex justify-content-xl-center align-items-xl-center"><strong>錄取通知</strong></legend>
+                                <div class="d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center align-items-xl-center toggle"><input type="radio" id="Do_Notify" name="Notify" value="Yes"><label for="Do_Notify" data-toggle="modal" data-target="#Message_Announcement">是</label><input type="radio" id="Do_Not_Notify" name="Notify" checked="checked"><label for="Do_Not_Notify">否</label></div><textarea id="Announce_Email_Address" style="height: 30px;width: 100%;" placeholder="電子郵件: lawrence910426@gmail.com"></textarea><a class="text-center edit_news" id="Display_Email_Address">lawrence910426@gmail.com</a>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12"><hr /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-9" style="margin-bottom: 30px;">
+                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center needsclick dz-clickable dropzone" id="Upload_Box" style="margin-top: 30px;border: 2px dashed #000000;height: 150px;" action="/"></div>
+                </div>
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body">
+                            <h4 class="text-center card-title">生成圖片連結</h4>
+                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="max-width: 200px;"><a class="text-center" id="Generated_Image_Link" href="#" style="width: 100%;">https://</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><label class="text-center" style="width: 100%;">選擇類別</label><label class="text-center" id="theme_alert" style="width: 100%;color: rgb(255,0,0);">*必填欄位</label>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1" for="formCheck-1" value="開箱" name="theme"><label class="form-check-label" for="formCheck-1">開箱<br></label></div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3" for="formCheck-3" value="新聞" name="theme"><label class="form-check-label" for="formCheck-3">新聞<br></label></div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-5" for="formCheck-5" value="自製" name="theme"><label class="form-check-label" for="formCheck-5">自製<br></label></div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-6" value="改造" name="theme"><label class="form-check-label" for="formCheck-6">改造<br></label></div>
+                                    </td>
+                                    <td style="width: 189px;">
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2" value="特色創作" name="theme"><label class="form-check-label" for="formCheck-2">特色創作<br></label></div>
+                                    </td>
+                                    <td style="width: 189px;">
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-10" value="收藏專訪" name="theme"><label class="form-check-label" for="formCheck-10">收藏專訪<br></label></div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4" name="theme" value="美漫"><label class="form-check-label" for="formCheck-4">美漫<br></label></div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-7" name="theme" value="攝影"><label class="form-check-label" for="formCheck-7">攝影<br></label></div>
+                                    </td>
+                                </tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-md-12 col-lg-12 col-xl-12" style="margin-bottom: 30px;"><label class="text-center" style="width: 100%;">Markdown 語法速抄表</label>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>字體</th>
+                                    <th>強調</th>
+                                    <th>列表</th>
+                                    <th>多媒體</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td># 最大字體</td>
+                                    <td>*斜體*</td>
+                                    <td>1. 數字列表一<br>2.&nbsp;數字列表二<br></td>
+                                    <td>![](圖片網址)<br></td>
+                                </tr>
+                                <tr>
+                                    <td>## 次大字體</td>
+                                    <td>**粗體**</td>
+                                    <td>- 列表一<br>- 列表二<br></td>
+                                    <td>[](連結網址)<br></td>
+                                </tr>
+                                <tr>
+                                    <td>### 第三大字體</td>
+                                    <td>~~畫線~~</td>
+                                    <td><br></td>
+                                    <td><br></td>
+                                </tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div style="width: 100%;"><textarea id="markdown"></textarea></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-xl-12">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h1 class="text-center" style="color: #000000;margin-top: 8px;">[預覽模式]</h1>
+                    </div>
+                </div>
+                <div class="col" style="width: 100%;max-width: 100%;">
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                <div id="rendered" style="width: 87%;height: 100%;max-width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 30px;">
+                            <div class="card" style="margin-bottom: 30px;background-color: #f99833;">
+                                <div class="card-body" id="interview_news">
+                                    <h4 class="text-center card-title"><strong>收藏專訪</strong></h4>
+                                </div>
+                            </div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 右邊 - 正 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7998707052960658"
+     data-ad-slot="2259794650"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                            <div class="card d-none" style="margin-bottom: 30px;">
+                                <div class="card-body">
+                                    <h4 class="text-center card-title">廣告</h4><img style="width: 100%;">
+                                </div>
+                            </div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 右邊 - 正二 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7998707052960658"
+     data-ad-slot="8199157671"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                            <div class="card" style="margin-bottom: 30px;">
+                                <div class="card-body" id="hot_news">
+                                    <h4 class="text-center card-title"><strong>熱門</strong></h4>
+                                </div>
+                            </div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 右邊 - 正三 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7998707052960658"
+     data-ad-slot="5572994339"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><button class="btn btn-primary post_news" type="button" style="background-color: rgb(0,0,0);width: 100%;" data-toggle="modal" data-target="#User_Announcement">送出</button><button class="btn btn-primary edit_news" type="button" style="background-color: rgb(0,0,0);width: 100%;" data-toggle="modal" data-target="#check_verify">審核完成</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-basic"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 底 - 橫幅 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7998707052960658"
+     data-ad-slot="5928217555"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <footer>
+            <div class="social"><a href="https://www.facebook.com/%E4%B8%80%E7%9B%B4%E9%A0%91-107594257704279" style="border: 0px;"><img src="assets/img/41b0edd10bd1fcca1833c2e651fcfdaa.png"></a><a href="assets/img/1025px-Instagram-Icon.png" style="border: 0px none rgb(75, 76, 77) ;"><img src="assets/img/1025px-Instagram-Icon.png"></a><a href="mailto:stubbornnews0920@gmail.com" style="border: 0px;"><img src="assets/img/1024px-Gmail_Icon.svg.png"></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.html">首頁</a></li>
+                <li class="list-inline-item"><a href="terms.html">免責聲明</a></li>
+                <li class="list-inline-item"><a href="privacy_policy.html">隱私權政策</a></li>
+                <li class="list-inline-item"><a href="advertisements.html">刊登廣告</a></li>
+                <li class="list-inline-item" id="logout_btn"><a>登出</a></li>
+            </ul>
+            <p class="copyright">一直頑 © 2020</p>
+        </footer>
+    </div>
+    <div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="User_Announcement">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">送出投稿<br></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>待投稿審核人員核可後，您的投稿就會出現在網站上了！</p>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">取消</button><button class="btn btn-primary" id="submit" type="button" data-dismiss="modal">確認</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="Anti_Idiot">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">請完成填寫<br></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>您還有尚未填寫完成的資料</p>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">關閉</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="Message_Announcement">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">請先私訊粉專</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>點擊右下角Messenger圖案，並私訊我們的<a href="https://www.facebook.com/%E4%B8%80%E7%9B%B4%E9%A0%91-107594257704279">粉絲專頁</a>後，我們才能發送投稿錄取通知，我們無法傳送訊息給未曾私訊粉絲專頁的用戶。<br></p>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-primary" type="button" data-dismiss="modal">確認</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="check_verify">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">確認審核</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>將「是否顯示」設為「是」，這篇文章才會顯示喔<br></p>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">關閉</button><button class="btn btn-primary" id="submit_check_verify" type="button">確認</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="Delete_Confirm">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">確認刪除？<br></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>刪除之後，貼文將從資料庫中被永久移除！</p>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">關閉</button><button class="btn btn-primary bg-danger" id="Delete_Post" type="button">確認</button></div>
+                </div>
+            </div>
+        </div>
+    </div><a class="cd-top js-cd-top cd-top--fade-out cd-top--show" style="background-image:url(&quot;assets/img/cd-top-arrow.svg&quot;);" href="#0">Top</a><!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD7zmd0TZzynS5j17u4QF0cDKIWJzMgulc",
+    authDomain: "stubborn-toy.firebaseapp.com",
+    databaseURL: "https://stubborn-toy.firebaseio.com",
+    projectId: "stubborn-toy",
+    storageBucket: "stubborn-toy.appspot.com",
+    messagingSenderId: "72000445740",
+    appId: "1:72000445740:web:7dc8a7b12db8e4c1a0a089",
+    measurementId: "G-RZYHVBHEGR"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/3rd_Party/base64.js"></script>
+    <script src="assets/js/3rd_Party/Bold-BS4-Animated-Back-To-Top.js"></script>
+    <script src="assets/js/3rd_Party/cropper.js"></script>
+    <script src="assets/js/3rd_Party/dropzone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+    <script src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&amp;version=v7.0&amp;appId=1201823270181889&amp;autoLogAppEvents=1" crossorigin="anonymous"></script>
+    <script src="assets/js/3rd_Party/jquery-cropper.js"></script>
+    <script src="assets/js/3rd_Party/jquery.base64.js"></script>
+    <script src="assets/js/3rd_Party/Scroll-to-top.js"></script>
+    <script src="assets/js/advertisement.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/load_fragment.js"></script>
+    <script src="assets/js/login_logout.js"></script>
+    <script src="assets/js/permission.js"></script>
+    <script src="assets/js/personal_info.js"></script>
+    <script src="assets/js/submit_clarification.js"></script>
+    <script src="assets/js/submit_news.js"></script>
+    <script src="assets/js/verify_news.js"></script>
+</body>
+
+</html>
