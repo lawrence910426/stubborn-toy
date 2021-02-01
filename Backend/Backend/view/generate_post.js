@@ -60,6 +60,7 @@ module.exports = async (news, config) => {
 		var html = converter.makeHtml(news.content);
 		var template = await read_template();
 		template = template.replace(/<script type="application\/ld\+json">(.|\n)*<\/script>/gm, gen_AMP(news));
+		console.log(template)
 		var root = HTMLParser.parse(template);	
 		root.querySelector("#post_content").set_content(html)
 		root.querySelector("#title").set_content('[' + news.category + ']' + news.title)
