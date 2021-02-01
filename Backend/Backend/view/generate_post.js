@@ -3,19 +3,6 @@
 
 /* news: { title, content, views, author, date, category } */
 
-/* 
-<script type="application/ld+json">
-{	
-	"headline": "玩具新聞｜一直頑Stubborn Toy News",
-	"image": [
-		"https://stubbornnews.com/frontend/assets/img/0816OK88.png"
-	],
-	"datePublished": "2020-09-01T08:00:00+08:00",
-	"dateModified": "2021-01-29T23:20:00+08:00",
-}
-</script>
-*/
-
 /*
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -46,11 +33,11 @@ module.exports = async (news, config) => {
 	}
 
 	function gen_AMP(news) {
-		var img_links = [... news.content.matchAll(/!\[\]\([^\)]*\)/g)]
+		var img_links = [... news.content.matchAll(/!\[\]\([^\)]*\)/gm)]
 		var links = []
-		img_link.forEach(item => links.push(item.slice(3, -1)))
+		img_links.forEach(item => links.push(item[0].slice(4, -1)))
 		var json = {	
-			"headline": "玩具新聞｜一直頑Stubborn Toy News",
+			"headline": utf8.decode("\xe7\x8e\xa9\xe5\x85\xb7\xe6\x96\xb0\xe8\x81\x9e\xef\xbd\x9c\xe4\xb8\x80\xe7\x9b\xb4\xe9\xa0\x91\x53\x74\x75\x62\x62\x6f\x72\x6e\x20\x54\x6f\x79\x20\x4e\x65\x77\x73"),
 			"image": links
 		}
 		return `<script type="application/ld+json">` + JSON.stringify(json) + `</script>`;
@@ -59,16 +46,16 @@ module.exports = async (news, config) => {
 	try {
 		var html = converter.makeHtml(news.content);
 		var template = await read_template();
-		template = template.replace(/<script type="application\/ld\+json">(.|\n)*<\/script>/gm, gen_AMP(news));
-		console.log(template)
-		var root = HTMLParser.parse(template);	
+		var root = HTMLParser.parse(template);			
 		root.querySelector("#post_content").set_content(html)
 		root.querySelector("#title").set_content('[' + news.category + ']' + news.title)
 		root.querySelector("#views").set_content(utf8.decode('\xe7\x80\x8f\xe8\xa6\xbd\xe6\xac\xa1\xe6\x95\xb8\xef\xbc\x9a') + news.views + utf8.decode('\x20\xe6\xac\xa1'))
 		root.querySelector("#author").set_content(utf8.decode('\xe4\xbd\x9c\xe8\x80\x85\xef\xbc\x9a') + news.author)
 		root.querySelector("#date").set_content(utf8.decode('\xe6\x97\xa5\xe6\x9c\x9f\xef\xbc\x9a') + moment(news.date).format("YYYY-MM-DD"))
 		root.querySelector("#category").set_content(utf8.decode('\xe9\xa1\x9e\xe5\x88\xa5\xef\xbc\x9a') + news.category)
-		return root.toString();
+		var output = root.toString()
+		output = output.replace(/<script type="application\/ld\+json">[^<]*<\/script>/gm, gen_AMP(news));
+		return output;
 	} catch (ex) {
 		console.log(ex)
 		return ex;
