@@ -46,7 +46,7 @@ module.exports = async (news, config) => {
 	}
 
 	function gen_AMP(news) {
-		var img_links = [... img.matchAll(/!\[\]\([^\)]*\/g)]
+		var img_links = [... news.content.matchAll(/!\[\]\([^\)]*\)/g)]
 		var links = []
 		img_link.forEach(item => links.push(item.slice(3, -1)))
 		var json = {	
