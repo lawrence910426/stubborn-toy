@@ -1,0 +1,21 @@
+div.headline {
+  display: flex;
+}
+
+div.headline figure {
+  margin: 0;
+  position: relative;
+  flex: 1;
+  font-size: 0;
+  overflow: hidden;
+}
+
+div.headline figure figcaption {
+  padding: 0.3rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  position: absolute;
+  transition: .6s;
+  bottom: 0;
+}
+

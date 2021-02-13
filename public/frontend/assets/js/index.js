@@ -1,12 +1,32 @@
-$(document).ready(function() {
-    function gen_headline(news, active) {
-        return `<div news_id="${news.id}" class="${active} carousel-item view_news" style="background-color: rgb(255,255,255);">
+/*
+function gen_headline(news, active) {
+        return `
+<div news_id="${news.id}" class="${active} carousel-item view_news" style="background-color: rgb(255,255,255);">
             <a href="${news.id}"><div class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-start align-items-xl-center"
                 style="width: 100%;">
                 <h1 class="text-truncate text-left" style="font-size: 32px;width: 100%;color: #000855;margin: 0px 12px;"><strong>${news.title}</strong></h1>
             </div>
             <div class="d-sm-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center"><img class="flex-grow-0 flex-shrink-0" src="${news.headline_image_link}" alt="Slide Image" style="width: 100%;" /></div>
         </a></div>`
+    }
+*/
+
+
+$(document).ready(function() {
+    function gen_headline(news, active) {
+        return `
+<div news_id="${news.id}" class="${active} carousel-item view_news">
+            <div class="headline">
+                <figure class="figure"><img class="img-fluid figure-img" src="${news.headline_image_link}" style="margin: 0px;" />
+                    <figcaption class="figure-caption text-break" style="width: 100%;height: 5.5rem;font-size: 22pt;padding: 0px;">
+                        
+                        <p style="margin-left: 10px; margin-right: 10px; font-weight: 1000"><strong>${news.title}
+                        </strong></p>
+                        
+                    </figcaption>
+                </figure>
+            </div>
+        </div>`  
     }
     
     function gen_news(news) {
@@ -65,7 +85,6 @@ $(document).ready(function() {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
                     $("#headline_carousel").append(gen_headline(element, i == 0 ? "active" : "")) 
-                    $("#headline_indicator").append(`<li data-target="#carousel-1" data-slide-to="${i}" class=""></li>`)
                 });
                 res()
             })
