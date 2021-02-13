@@ -48,7 +48,7 @@ module.exports = async (news, config) => {
 		var template = await read_template();
 		var root = HTMLParser.parse(template);			
 		root.querySelector("#post_content").set_content(html)
-		root.querySelector("#title").set_content(utf8.decode('\xe3\x80\x90') + news.category + utf8.encode('\xe3\x80\x91') + news.title)
+		root.querySelector("#title").set_content(utf8.decode('\xe3\x80\x90') + news.category + utf8.decode('\xe3\x80\x91') + news.title)
 		root.querySelector("#views").set_content(utf8.decode('\xe7\x80\x8f\xe8\xa6\xbd\xe6\xac\xa1\xe6\x95\xb8\xef\xbc\x9a') + news.views + utf8.decode('\x20\xe6\xac\xa1'))
 		root.querySelector("#author").set_content(utf8.decode('\xe4\xbd\x9c\xe8\x80\x85\xef\xbc\x9a') + news.author)
 		root.querySelector("#date").set_content(utf8.decode('\xe6\x97\xa5\xe6\x9c\x9f\xef\xbc\x9a') + moment(news.date).format("YYYY-MM-DD"))
