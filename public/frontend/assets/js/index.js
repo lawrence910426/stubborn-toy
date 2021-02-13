@@ -85,7 +85,6 @@ $(document).ready(function() {
                 data = JSON.parse(data)
                 data.forEach((element, i) => {
                     $("#headline_carousel").append(gen_headline(element, i == 0 ? "active" : "")) 
-                    $("#headline_indicator").append(`<li data-target="#carousel-1" data-slide-to="${i}" class=""></li>`)
                 });
                 res()
             })
