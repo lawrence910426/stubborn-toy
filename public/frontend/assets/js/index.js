@@ -18,7 +18,7 @@ $(document).ready(function() {
 <div news_id="${news.id}" class="${active} carousel-item view_news">
             <div class="headline">
                 <figure class="figure"><img class="img-fluid figure-img" src="${news.headline_image_link}" style="margin: 0px;" />
-                    <figcaption class="figure-caption text-break" style="width: 100%;height: 5.5rem;font-size: 22pt;padding: 0px;">
+                    <figcaption class="figure-caption text-break" style="width: 100%;height: 90px;font-size: 22pt;padding: 0px;">
                         
                         <p style="margin-left: 10px; margin-right: 10px; font-weight: 1000"><strong>${news.title}
                         </strong></p>
