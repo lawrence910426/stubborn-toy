@@ -37,6 +37,7 @@ if(url.searchParams.get("edit_id") == undefined) {
 
 在編輯器中，使用兩個換行可以製造一個換行；在編輯器中，一個星號可以做出*斜體*，兩個星號可以做出**粗體**。
 `;
+        if($("#markdown").length == 0) return;
         var simplemde = new SimpleMDE({ element: $("#markdown")[0] })
         simplemde.value(greeting_template);
 

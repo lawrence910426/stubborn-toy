@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    if(window.localStorage.user == undefined) return;
     var self = JSON.parse(window.localStorage.user)
     
     function reload() {
