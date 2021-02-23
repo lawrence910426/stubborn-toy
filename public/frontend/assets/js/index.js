@@ -131,6 +131,6 @@ $(document).ready(function() {
     
     $(".search_key").click(function() {
         var key = $(this).text()
-        window.location.href = `/frontend/search_result.html?q=${key}`
+        window.location.href = `/frontend/search_result.html?q=一直頑 ${key}`
     })
 })
