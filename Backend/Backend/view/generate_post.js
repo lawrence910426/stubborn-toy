@@ -37,7 +37,7 @@ module.exports = async (news, config) => {
 		var links = []
 		img_links.forEach(item => links.push(item[0].slice(4, -1)))
 		var json = {	
-			"headline": utf8.decode("\xe7\x8e\xa9\xe5\x85\xb7\xe6\x96\xb0\xe8\x81\x9e\xef\xbd\x9c\xe4\xb8\x80\xe7\x9b\xb4\xe9\xa0\x91\x53\x74\x75\x62\x62\x6f\x72\x6e\x20\x54\x6f\x79\x20\x4e\x65\x77\x73"),
+			"headline": news.title,
 			"image": links
 		}
 		return `<script type="application/ld+json">` + JSON.stringify(json) + `</script>`;
