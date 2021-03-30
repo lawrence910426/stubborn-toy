@@ -22,7 +22,7 @@ const config = {
     production: {
         database: {
             db_name: 'stubborntoy',
-            user_name: 'stubbornnews',
+            user_name: 'root',
             password: '2rjurrru',
             pool: {
                 max: 100,
