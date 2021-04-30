@@ -327,7 +327,17 @@
                 <li class="list-inline-item" id="logout_btn"><a>登出</a></li>
             </ul>
             <p class="copyright">一直頑 © 2020</p>
-        </footer>
+        </footer><script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1201823270181889',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v10.0'
+    });
+  };
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
