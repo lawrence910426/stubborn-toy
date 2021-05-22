@@ -65,7 +65,17 @@
 </head>
 
 <body>
-    <div id="nav">
+    <div id="nav"><script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1201823270181889',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v10.0'
+    });
+  };
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
             <div class="container"><a class="navbar-brand border rounded-0 border-white" href="index.html"><img class="border rounded-0 border-white" style="box-shadow: none;margin: 0px;border: 3px none rgb(34, 34, 34);min-width: 100px;max-width: 100px;height: 100px;" src="assets/img/0816OK88.png" width="100px" height="100px"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
@@ -217,17 +227,7 @@
                 <li class="list-inline-item" id="logout_btn"><a>登出</a></li>
             </ul>
             <p class="copyright">一直頑 © 2020</p>
-        </footer><script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId            : '1201823270181889',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v10.0'
-    });
-  };
-</script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+        </footer>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
