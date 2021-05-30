@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>/advertisements.html</loc>
+        <loc>https://stubbornnews.com/frontend/advertisements.html</loc>
     </url>
     <url>
-        <loc>/edit_news.html</loc>
+        <loc>https://stubbornnews.com/frontend/edit_news.html</loc>
     </url>
     <url>
-        <loc>/index.html</loc>
+        <loc>https://stubbornnews.com/frontend/index.html</loc>
     </url>
     <url>
-        <loc>/news.html</loc>
+        <loc>https://stubbornnews.com/frontend/news.html</loc>
     </url>
     <url>
-        <loc>/personal_info.html</loc>
+        <loc>https://stubbornnews.com/frontend/personal_info.html</loc>
     </url>
     <url>
-        <loc>/privacy_policy.html</loc>
+        <loc>https://stubbornnews.com/frontend/privacy_policy.html</loc>
     </url>
     <url>
-        <loc>/search_result.html</loc>
+        <loc>https://stubbornnews.com/frontend/search_result.html</loc>
     </url>
     <url>
-        <loc>/submit_clarification.html</loc>
+        <loc>https://stubbornnews.com/frontend/submit_clarification.html</loc>
     </url>
     <url>
-        <loc>/terms.html</loc>
-    </url>
-    <url>
-        <loc>/verify_news.html</loc>
+        <loc>https://stubbornnews.com/frontend/terms.html</loc>
     </url>
 </urlset>
