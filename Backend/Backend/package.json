@@ -22,7 +22,8 @@
     "sequelize": "^6.3.5",
     "showdown": "^1.9.1",
     "utf8": "^3.0.0",
-    "workerpool": "^6.0.0"
+    "workerpool": "^6.0.0",
+    "cheerio": "0.22.0"
   },
   "scripts": {
     "test": "mocha"
