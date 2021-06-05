@@ -1,5 +1,6 @@
-const workerpool = require('workerpool');
-const pool = workerpool.pool();
+// const workerpool = require('workerpool');
+// const pool = workerpool.pool();
+const gen_post = require('../view/generate_post.js');
 
 module.exports = ((db, config) => {
 	return async (req, res) => {
@@ -20,20 +21,16 @@ module.exports = ((db, config) => {
 			news = news[0]
 			news.views += 1
 			await news.save()
-			pool.exec(require("../view/generate_post.js"), [
-				{
-					title: news.title,
-					content: news.content,
-					views: news.views,
-					author: news.author.name,
-					date: news.datetime,
-					category: news.category
-				},
-				config
-			])
+			gen_post({
+				title: news.title,
+				content: news.content,
+				views: news.views,
+				author: news.author.name,
+				date: news.datetime,
+				category: news.category
+			}, config)
 				.then(function (result) { res.send(result) })
 				.catch(function (err) { console.error(err); })
-				.then(function () { pool.terminate(); })
 		}
 	}
 });
